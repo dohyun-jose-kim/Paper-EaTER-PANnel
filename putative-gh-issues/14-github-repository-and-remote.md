@@ -2,7 +2,7 @@
 
 - Local ID: `14`
 - Project version: `v0.2.1`
-- Publication status: Published as a source file; no GitHub issue created.
+- Publication status: Published as GitHub issue [#14](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/14).
 - Work type: Repository setup.
 - Setup status: Complete (2026-11-13).
 - Source: User authorization to create a public repository and push all three branches, followed by the corrected official name.
@@ -22,7 +22,7 @@ The public repository is [dohyun-jose-kim/Paper-EaTER-PANnel](https://github.com
 | Default branch | `main`. |
 | Published branches | `main`, `dev`, and `big-pic-design`, each tracking the corresponding `origin` branch. |
 | Current work | Latest design documents and issue drafts are on `big-pic-design`; no branch merge was performed. |
-| Issue publication | Drafts were pushed as source files. No GitHub issues were created. |
+| Issue publication | All 14 drafts are published as GitHub issues; setup issue #14 is completed. |
 
 The repository was initially created under a mistyped name and renamed to the user-corrected official name before the initial push. The local remote was updated to the corrected URL. The local directory already matched and required no move.
 

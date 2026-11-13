@@ -2,7 +2,7 @@
 
 - Local ID: `10`
 - Project version: `v0.2.1`
-- Publication status: Local draft; not published.
+- Publication status: Published as GitHub issue [#10](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/10).
 - Work type: Design.
 - Design level: Exploration and definition.
 - Implementation readiness: Not ready; design work remains.
