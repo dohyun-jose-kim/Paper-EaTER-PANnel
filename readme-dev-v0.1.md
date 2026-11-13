@@ -1,4 +1,4 @@
-# PAPER-LLM-read
+# PEPaper-EaTER-PANnel
 
 Project version: `v0.2.1`.
 

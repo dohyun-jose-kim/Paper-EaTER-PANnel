@@ -41,14 +41,14 @@ Do not reopen GUI introduction, user control over the established settings, or s
 | 11 | [Implementation technology and GUI](11-gui-and-technology.md) | Design refinement | Draft screen flows and wireframes for mode selection, settings, and their explanations. |
 | 12 | [Subscription usage and API costs](12-usage-and-cost.md) | Exploration and definition | List the usage information and user controls needed before choosing provider-specific limits. |
 | 13 | [Fidelity, reproducibility, and traceability](13-acceptance-criteria.md) | Exploration and definition | Define assessment terms and consequential error categories before proposing an evaluation protocol. |
-| 14 | [GitHub repository creation and remote connection](14-github-repository-and-remote.md) | Setup planning | Resolve repository owner, name, visibility, and initial push scope; then verify account access. |
+| 14 | [GitHub repository creation and remote connection](14-github-repository-and-remote.md) | Setup planning | Name and account access verified; review proposed owner, visibility, and later push scope. |
 
 ## Work that can start now
 
 - **01 and 11:** Draft the three mode workflows and GUI flows or wireframes. Their central requirements are established. Unsettled values must remain labeled rather than silently becoming defaults.
 - **03 and 04:** Define execution units, count semantics, and concurrency behavior. Numeric defaults and limits require further rationale.
 - **Other design issues:** Begin the listed investigation or scenario-writing action. Do not treat a lack of a final design as a reason to postpone all useful work.
-- **14:** The repository setup procedure is concrete, but owner, name, visibility, push scope, and account access must be resolved before executing it.
+- **14:** Remote setup commands are prepared and the official name and account access are verified. Owner and visibility remain open for creation; push scope remains open for later publication.
 
 This readiness assessment is not a mandatory priority order. Starting design work does not authorize implementation, live model evaluation, or external publication.
 
