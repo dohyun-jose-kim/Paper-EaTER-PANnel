@@ -8,7 +8,7 @@ Project version: `v0.2.1`.
 
 ## Scope and basis
 
-This document records the current design of `PEPaper-EaTER-PANnel`. Its basis is the [development README](../readme-dev-v0.1.md) and the user's directions in the current discussion.
+This document records the current design of `Paper-EaTER-PANnel`. Its basis is the [development README](../readme-dev-v0.1.md) and the user's directions in the current discussion.
 
 The user approved the conceptual diagram and authorized these design drafts. The user also directed that the new design remain independent of the previous project and that its records not be consulted further for this work. Previous extractor evaluations, recommendations, and processing rules are therefore not included as a basis for this design.
 

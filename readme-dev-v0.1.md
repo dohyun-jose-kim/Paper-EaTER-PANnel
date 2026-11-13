@@ -1,4 +1,4 @@
-# PEPaper-EaTER-PANnel
+# Paper-EaTER-PANnel
 
 Project version: `v0.2.1`.
 

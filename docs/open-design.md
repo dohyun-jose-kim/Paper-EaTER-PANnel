@@ -8,7 +8,7 @@ Project version: `v0.2.1`.
 
 ## Purpose and use
 
-This document separates user choices and intended product behavior from remaining design decisions for `PEPaper-EaTER-PANnel`. Read it with [Design status](design-status.md) and the [development README](../readme-dev-v0.1.md).
+This document separates user choices and intended product behavior from remaining design decisions for `Paper-EaTER-PANnel`. Read it with [Design status](design-status.md) and the [development README](../readme-dev-v0.1.md).
 
 The product must provide defaults and let users change supported settings. Model selection and combinations, execution count, concurrency, conflict-resolution policy, and all three deliverable modes are established user choices. Their exact defaults, supported ranges, combination constraints, and implementation mechanisms still need design. A user's choice for a task is not an unresolved product design decision.
 

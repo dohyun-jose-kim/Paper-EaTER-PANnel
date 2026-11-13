@@ -2,7 +2,7 @@
 
 Project version: `v0.2.1`.
 
-Publication status: Local drafts; not published.
+Publication status: Drafts published as source files on `big-pic-design`; no GitHub issues created.
 
 ## Purpose and boundaries
 
@@ -18,7 +18,7 @@ The drafts describe work to do. Their existence does not mean that the work, des
 |---|---|---|
 | Design refinement | User-facing requirements are established. Define the remaining behavior, defaults, limits, and mechanisms. | 01-05 and 11 |
 | Exploration and definition | The problem and some requirements are known. Gather missing information and develop an approach before selecting details. | 06-10 and 12-13 |
-| Setup planning | The operational objective is clear. Repository details and access must be resolved before execution. | 14 |
+| Repository setup | Public repository, remote, and branch tracking are configured and verified. | 14 (complete) |
 
 These levels describe the current work, not importance. They are separate from user configurability: an established user choice can still need substantial design. No product-design draft is ready for implementation.
 
@@ -41,20 +41,20 @@ Do not reopen GUI introduction, user control over the established settings, or s
 | 11 | [Implementation technology and GUI](11-gui-and-technology.md) | Design refinement | Draft screen flows and wireframes for mode selection, settings, and their explanations. |
 | 12 | [Subscription usage and API costs](12-usage-and-cost.md) | Exploration and definition | List the usage information and user controls needed before choosing provider-specific limits. |
 | 13 | [Fidelity, reproducibility, and traceability](13-acceptance-criteria.md) | Exploration and definition | Define assessment terms and consequential error categories before proposing an evaluation protocol. |
-| 14 | [GitHub repository creation and remote connection](14-github-repository-and-remote.md) | Setup planning | Name and account access verified; review proposed owner, visibility, and later push scope. |
+| 14 | [GitHub repository creation and remote connection](14-github-repository-and-remote.md) | Setup complete | Public repository and all three branch upstreams verified. |
 
 ## Work that can start now
 
 - **01 and 11:** Draft the three mode workflows and GUI flows or wireframes. Their central requirements are established. Unsettled values must remain labeled rather than silently becoming defaults.
 - **03 and 04:** Define execution units, count semantics, and concurrency behavior. Numeric defaults and limits require further rationale.
 - **Other design issues:** Begin the listed investigation or scenario-writing action. Do not treat a lack of a final design as a reason to postpone all useful work.
-- **14:** Remote setup commands are prepared and the official name and account access are verified. Owner and visibility remain open for creation; push scope remains open for later publication.
+- **14:** Complete. The public repository is `dohyun-jose-kim/Paper-EaTER-PANnel`; `origin` is configured, all three branches are pushed and tracked, and `main` is the default branch.
 
 This readiness assessment is not a mandatory priority order. Starting design work does not authorize implementation, live model evaluation, or external publication.
 
 ## Review and completion
 
-Each issue contains established requirements, unresolved questions, expected output, and unchecked completion criteria. Those criteria describe completion of the issue's design or setup work, not completion of this draft-writing task.
+Product-design drafts contain established requirements, unresolved questions, expected output, and unchecked completion criteria. Setup issue 14 records the completed repository configuration. Those criteria describe completion of the issue's design or setup work, not completion of this draft-writing task.
 
 Review the scope and evidence before treating a proposal as a decision. Record reviewed decisions in the project design documents. If a broad topic later needs smaller issues, split it around independently reviewable results and retain links to the original topic. Do not invent detailed implementation tickets merely to make all drafts equally long.
 
