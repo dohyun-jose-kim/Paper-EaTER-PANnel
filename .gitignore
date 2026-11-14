@@ -5,3 +5,6 @@
 
 # macOS folder metadata.
 .DS_Store
+
+# Unofficial local ZIP packages.
+*.zip
