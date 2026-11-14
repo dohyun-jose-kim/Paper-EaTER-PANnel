@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "design-draft-not-runtime-configuration",
+  "scope": "filename title field",
+  "rules": [
+    {
+      "source": " ",
+      "replacement": "_",
+      "status": "confirmed-formatting",
+      "requires_user_confirmation": true
+    }
+  ],
+  "candidate_character_mappings": [
+    {
+      "source": "/",
+      "replacement": "[U+002F]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "\\",
+      "replacement": "[U+005C]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": ":",
+      "replacement": "[U+003A]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "*",
+      "replacement": "[U+002A]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "?",
+      "replacement": "[U+003F]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "\"",
+      "replacement": "[U+0022]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "<",
+      "replacement": "[U+003C]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": ">",
+      "replacement": "[U+003E]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    },
+    {
+      "source": "|",
+      "replacement": "[U+007C]",
+      "status": "proposed-portability-rule",
+      "requires_user_confirmation": true
+    }
+  ],
+  "unicode_policy": {
+    "preserve_greek_letters": true,
+    "preserve_subscripts_and_superscripts": true,
+    "automatic_transliteration": false,
+    "automatic_compatibility_normalization": false
+  },
+  "fallback": "Preserve representable notation. For unsupported, ambiguous, control, or unrepresentable characters or typography, show source evidence and request user confirmation of a proposed filename. Never silently drop or flatten notation.",
+  "length_policy": "Do not truncate or summarize automatically; propose an alternative for confirmation if the target filesystem limit would be exceeded."
+}
