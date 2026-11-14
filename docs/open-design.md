@@ -2,9 +2,19 @@
 
 Status: Confirmed requirements incorporated; remaining design work tracked.
 
-Updated: 2026-11-14.
+Updated: 2026-11-15.
 
 Project version: `v0.2.1`.
+
+## Resume checkpoint on 2026-11-15
+
+Read [the conversation handoff](design-status.md#resume-here-conversation-handoff-on-2026-11-15) before continuing. It consolidates the accepted requirements and distinguishes them from unapproved proposals. The last six-stage workflow explanation was NOT finally approved by the user. Earlier individual decisions remain valid.
+
+The [preserved six-stage proposal](design-status.md#preserved-six-stage-workflow-proposal-for-the-next-review) includes the step-by-step behavior, proposed state sketch, unapproved branches, and an opening review question for the next conversation. It was retained at the user's request without promoting it to an approved design.
+
+Next question: how should the user exit active review and permit final approved application? `Finish review`, `Back to review`, change-set freezing, subset application while other items remain pending, no-change completion, and exact unlock/failure transitions are still proposals. Rerun during review is already supported by the accepted requirements; it does not unlock the document or automatically apply new candidates. Do not treat the six-stage explanation as an accepted state machine.
+
+This tracker and design-status.md are the current local record; historical issue drafts/comments have not been synchronized with these latest decisions. Documentation only; implementation and model evaluation remain outside the authorized scope.
 
 ## Purpose and use
 
@@ -52,7 +62,7 @@ Remaining design: navigation of the structured result, detailed bibliographic fi
 
 ## Naming and workspace layout
 
-Confirmed filename stem: `<년도>_<저널>_<약칭>__<타이틀>_<기타 사항>`. The title is the first section in result inspection; bibliographic information also supplies naming fields. Confirmed abbreviation precedence: use the paper-stated method/tool/database or similar resource name, preserving original spelling; if absent, use the user-defined short identifier; if neither exists, the app proposes an identifier for user review. Distinguish app proposals from source-derived names. Selection among multiple eligible resource names, other missing/optional values, filename normalization, and collisions need specification. The user requested a concrete local directory and extension proposal, including proposed/approved-change metadata that people can understand. See the [proposal and decision record](design-status.md#naming-convention-and-proposed-workspace-structure). Local layout and extension discussion is now active; downstream export packaging remains deferred. The user accepted the source/runs/current/review layout and proposed file formats as the current baseline. This includes section Markdown files with addressable paragraphs, separate figure/table/equation assets, structured document and bibliographic metadata, BibTeX generated from confirmed metadata, and machine-readable approval events with a human-readable summary. Approval and successful application are distinct records. Remaining work concerns precise fields and implementation mechanisms, not whether to adopt this baseline.
+Confirmed filename stem: `<년도>__<저널>__<약칭>__<타이틀>__<기타 사항>`. The title is the first section in result inspection; bibliographic information also supplies naming fields. Confirmed abbreviation precedence: use the paper-stated method/tool/database or similar resource name, preserving original spelling; if absent, use the user-defined short identifier; if neither exists, the app proposes an identifier for user review. Distinguish app proposals from source-derived names. Selection among multiple eligible resource names, other missing/optional values, filename normalization, and collisions need specification. The user requested a concrete local directory and extension proposal, including proposed/approved-change metadata that people can understand. See the [proposal and decision record](design-status.md#naming-convention-and-proposed-workspace-structure). Local layout and extension discussion is now active; downstream export packaging remains deferred. The user accepted the source/runs/current/review layout and proposed file formats as the current baseline. This includes section Markdown files with addressable paragraphs, separate figure/table/equation assets, structured document and bibliographic metadata, BibTeX generated from confirmed metadata, and machine-readable approval events with a human-readable summary. Approval and successful application are distinct records. Remaining work concerns precise fields and implementation mechanisms, not whether to adopt this baseline.
 
 ## Publication year and DOI
 
@@ -60,13 +70,45 @@ Confirmed: the filename year is the publication year in the official citation in
 
 ## Journal filename field and mapping table
 
-Confirmed: use a mapped journal abbreviation only if config/journal-abbreviations.json contains a matching entry; otherwise use the full journal name. The mapping file exists as an empty JSON object, so no abbreviations currently match. Replace spaces in the filename journal field with underscores; preserve the original full name in bibliographic metadata. Use the input repository name for preprints, or unknown-journal with user confirmation if unidentified. The method/tool/database abbreviation field remains distinct. Detailed matching normalization and future mapping-table maintenance remain to be designed. No automatic abbreviation generation is selected.
+Confirmed: use a mapped journal abbreviation only if config/journal-abbreviations.json contains a matching entry; otherwise use the full journal name. The mapping file exists as an empty JSON object, so no abbreviations currently match. Replace spaces in the filename journal field with hyphens; preserve the original full name in bibliographic metadata. Use the input repository name for preprints, or unknown-journal with user confirmation if unidentified. The method/tool/database abbreviation field remains distinct. Detailed matching normalization and future mapping-table maintenance remain to be designed. No automatic abbreviation generation is selected.
 
 ## Full-title conversion and documentation upkeep
 
-Confirmed: full input-version title, original case/numbers/notation, spaces replaced with underscores, and the original title preserved in metadata. No automatic truncation or summarization. Conversions require user confirmation of the original and proposed name; unsupported notation and length-limit cases require reviewed fallback proposals. Preserve Greek letters and subscripts/superscripts where representable; no silent transliteration, flattening, or compatibility normalization. Source-rendered notation must remain inspectable when plain Unicode cannot express it faithfully. See the [decision record](design-status.md#full-title-filename-conversion) and config/filename-title-mapping.json. Candidate character replacements are explicitly proposals, not yet approved conversion rules.
+Confirmed: full input-version title, original case/numbers/notation, spaces replaced with hyphens, and the original title preserved in metadata. No automatic truncation or summarization. Conversions require user confirmation of the original and proposed name; unsupported notation and length-limit cases require reviewed fallback proposals. Preserve Greek letters and subscripts/superscripts where representable; no silent transliteration, flattening, or compatibility normalization. Source-rendered notation must remain inspectable when plain Unicode cannot express it faithfully. See the [decision record](design-status.md#full-title-filename-conversion) and config/filename-title-mapping.json. Candidate character replacements are explicitly proposals, not yet approved conversion rules.
 
-Remaining naming design: replacement vocabulary, target-filesystem validation, collisions, optional other-details field, multiple abbreviation candidates, and mapping-table versioning. Maintain the existing design documents against conversation decisions; no separate feature-list document is requested.
+Remaining naming design: replacement vocabulary, target-filesystem validation, collisions, detailed topic-suffix vocabulary and unavailable-topic handling, multiple abbreviation candidates, and mapping-table versioning. Maintain the existing design documents against conversation decisions; no separate feature-list document is requested.
+
+## Technical refinement draft now available
+
+The [technical refinement draft](design-status.md#technical-refinement-draft-naming-revisions-comparison-and-review) supplies concrete proposals for Unicode/filename handling, mapping versions, collision/length validation, stable IDs and immutable revisions, approval scope and stale-result checks, structural alignment, content comparison, figure coverage, and UI/state separation. It also defines the investigation boundaries for CLI adapters, security, and acceptance examples.
+
+These are reviewable engineering proposals, not newly accepted decisions or implemented capabilities. Naming conversion always retains the already accepted user-confirmation requirement. The mapping JSON now carries proposed categories, ordering, approval fields, and design examples; it is not an executable converter. Review next: detailed validation rules for the selected conservative portability policy and name-token vocabulary (name-first/code-point-second precedence is now confirmed), detailed topic-suffix rules, then revision/approval granularity. CLI integration feasibility and security mechanisms still need focused research. Deferred export/recovery topics have not been silently settled.
+
+## Confirmed fallback precedence
+
+When filename conversion is required, use character-name notation first (for example `[solidus]`), and explicit Unicode code-point notation such as `[U+002F]` if a reliable name representation is unavailable. If neither name nor code point is identifiable, use a numbered placeholder such as `[unknown-symbol-01]`. The computer selects the appropriate fallback level and constructs the complete proposed filename automatically. The user reviews and confirms the final proposal before application, regardless of which fallback levels were used. Do not request separate approval at each fallback step or for each individual character. Show all conversions and their levels within the final proposal. Preserve the original title and link placeholders to source location/image metadata; approval of a filename does not resolve uncertainty about the scientific content. Numbering scope and revision stability remain to be designed. Preserve directly representable scientific notation; unknown glyphs must not receive invented code points. The mapping file records this accepted precedence with proposed labels and code-point alternatives. Exact vocabulary formatting and unavailable-name conditions remain detailed design; the conservative portability policy is selected. Include cross-environment filename risks as conversion triggers and validate the actual destination. Detailed platform coverage and validation rules remain open; no ASCII-only conversion or universal compatibility guarantee is implied.
+
+## Concise subject suffix
+
+Confirmed: the filename uses `__` before the other-details suffix. An LLM proposes a very short subject/category descriptor at the specificity of the paper's provided keywords, grounded in the source. For general papers, use the subject alone; append preprint/review information after it only where applicable. Treat preprint status and review article type separately. Users can enter/edit identifying information, and the app can propose version/collision disambiguation when needed. Review and approve the complete filename; do not insert runtime or approval metadata automatically. An empty entry should receive a subject proposal, not automatic omission. No universal `v` fallback is established. Remaining design: exact vocabulary, missing-keyword handling, unavailable-subject representation, and justified length constraints. Preserve source keywords separately from the generated label.
+
+## Collision suffix
+
+Confirmed: use `-v<n>` at the end of the other-details field to disambiguate colliding filenames, without shortening the full title or overwriting an existing result. The computer proposes a candidate and the user confirms the complete final filename. Treat the collision counter separately from the input paper's publication/preprint version and execution revisions. Starting number, allocation scope, existing-version-token handling, and application-time collision checks remain detailed design.
+
+## Shortening exception
+
+Confirmed: when length constraints require shortening, propose a sufficiently shortened name and put the exact literal `shortend-file` last within the existing other-details field (not a separate field), before the extension and after any collision suffix (for example `...__topic-v2-shortend-file.pdf`). Include the marker, extension, collision suffix, and actual directory path in validation. The user reviews and approves the complete proposed result; no silent truncation. Preserve the original full title and record the approved name and exception reason in metadata. Detailed shortening strategy and numeric headroom remain open; do not invent a universal limit.
+
+## Change-set approval
+
+Confirmed: select candidates per paragraph, figure, table, and bibliographic field, including selections from different calls. Assemble them into a visible change set for final approval and Apply. Show related elements such as figure/caption together for review. Selection alone neither approves nor applies changes. Remaining design: dependency enforcement, transaction boundaries, and the transition from active review (Apply blocked) to final approved application.
+
+## Single instance and active-review protection
+
+Confirmed: only one application instance runs at a time; it may execute parallel papers/calls and CLI subprocesses internally. While a document is being reviewed, proposals can still be generated and shown, but Apply to that document is blocked. Preserve the current document and keep candidate outputs separate; other work continues. Application write paths must enforce the block, including app-mediated agent writes, rather than relying on a disabled UI button alone.
+
+Remaining design: instance-lock scope, multiple-tab behavior, entry/exit rules for active review, explicit release-to-Apply interaction, and handling external filesystem modifications. No automatic unlock or Apply is authorized. A stale-revision check is a defensive mechanism outside this protection, not permission to update a document during review.
 
 ## Current checkpoint
 

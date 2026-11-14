@@ -1,69 +1,87 @@
 {
   "schema_version": 1,
   "status": "design-draft-not-runtime-configuration",
-  "scope": "filename title field",
+  "scope": "filename naming design, including title conversion and suffix policies; not runtime configuration",
   "rules": [
     {
       "source": " ",
-      "replacement": "_",
+      "replacement": "-",
       "status": "confirmed-formatting",
-      "requires_user_confirmation": true
+      "requires_final_proposal_confirmation": true
     }
   ],
   "candidate_character_mappings": [
     {
       "source": "/",
-      "replacement": "[U+002F]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[solidus]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+002F]",
+      "unicode_character_name": "SOLIDUS",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "\\",
-      "replacement": "[U+005C]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[reverse-solidus]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+005C]",
+      "unicode_character_name": "REVERSE SOLIDUS",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": ":",
-      "replacement": "[U+003A]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[colon]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+003A]",
+      "unicode_character_name": "COLON",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "*",
-      "replacement": "[U+002A]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[asterisk]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+002A]",
+      "unicode_character_name": "ASTERISK",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "?",
-      "replacement": "[U+003F]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[question-mark]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+003F]",
+      "unicode_character_name": "QUESTION MARK",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "\"",
-      "replacement": "[U+0022]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[quotation-mark]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+0022]",
+      "unicode_character_name": "QUOTATION MARK",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "<",
-      "replacement": "[U+003C]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[less-than-sign]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+003C]",
+      "unicode_character_name": "LESS-THAN SIGN",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": ">",
-      "replacement": "[U+003E]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[greater-than-sign]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+003E]",
+      "unicode_character_name": "GREATER-THAN SIGN",
+      "requires_final_proposal_confirmation": true
     },
     {
       "source": "|",
-      "replacement": "[U+007C]",
-      "status": "proposed-portability-rule",
-      "requires_user_confirmation": true
+      "replacement": "[vertical-line]",
+      "status": "proposed-label-under-confirmed-name-first-policy",
+      "code_point_fallback": "[U+007C]",
+      "unicode_character_name": "VERTICAL LINE",
+      "requires_final_proposal_confirmation": true
     }
   ],
   "unicode_policy": {
@@ -72,6 +90,189 @@
     "automatic_transliteration": false,
     "automatic_compatibility_normalization": false
   },
-  "fallback": "Preserve representable notation. For unsupported, ambiguous, control, or unrepresentable characters or typography, show source evidence and request user confirmation of a proposed filename. Never silently drop or flatten notation.",
-  "length_policy": "Do not truncate or summarize automatically; propose an alternative for confirmation if the target filesystem limit would be exceeded."
+  "fallback": "Computer proposes character-name notation, then a known Unicode code point if a reliable name is unavailable, then a numbered unknown-symbol placeholder if both are unidentified. Present the complete final filename and all changes for user review before application. No intermediate confirmation prompts. Do not invent scientific meaning or code points.",
+  "length_policy": "When actual destination limits require shortening, generate a sufficiently shortened candidate with the exact marker shortend-file as the last token within the existing other-details field, after any collision suffix and before the extension. Validate the full candidate and path; obtain final-proposal approval before application. Preserve the original full title and exception reason; never silently truncate.",
+  "proposal_revision": "2026-11-14.10",
+  "policy_profile": {
+    "status": "confirmed-conservative-policy-with-proposed-validation-details",
+    "target_validation": "actual destination filesystem",
+    "portability": "conservative portability selected by user; detailed coverage and validation remain to be specified",
+    "normalize_stored_source": false,
+    "diagnostic_comparison_key": "optional NFC; never substitute for original",
+    "portability_status": "confirmed",
+    "ascii_only": false,
+    "universal_compatibility_guarantee": false
+  },
+  "processing_order": [
+    "collect original fields and source evidence",
+    "select exact journal mapping separately",
+    "apply field rules once with pinned mapping revision",
+    "assemble stem and extension",
+    "validate destination and detect collisions",
+    "show conversion and obtain exact-candidate approval",
+    "revalidate and record application outcome"
+  ],
+  "special_cases": [
+    {
+      "category": "controls_and_non_ascii_whitespace",
+      "action": "show escaped characters and source evidence; no silent deletion",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "category": "positioned_scripts_or_formulas",
+      "action": "preserve structured notation; request reviewed filename representation",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "category": "unknown_or_private_use_glyph",
+      "action": "Preserve a known code point where available; if both name and code point are unidentified, propose a numbered unknown-symbol placeholder with source evidence and mandatory user confirmation.",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "category": "literal_token_text",
+      "action": "preserve literally; never decode filenames",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "category": "collision",
+      "action": "do not overwrite; propose reviewed disambiguation",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "category": "length_limit",
+      "action": "Propose sufficiently shortened name with shortend-file last in other-details; validate complete path and obtain final-proposal approval.",
+      "status": "proposed",
+      "requires_final_proposal_confirmation": true
+    }
+  ],
+  "approval_record_fields": [
+    "proposal_id",
+    "paper_id",
+    "base_revision",
+    "field_inputs",
+    "source_refs",
+    "mapping_revision",
+    "mapping_digest",
+    "destination",
+    "candidate",
+    "changed_spans",
+    "validation_findings",
+    "approved_revision",
+    "application_outcome"
+  ],
+  "design_examples": [
+    {
+      "input": "α₂ dynamics",
+      "candidate": "α₂-dynamics",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "input": "x² versus x2",
+      "candidate": "x²-versus-x2",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "input": "A/B",
+      "candidate": "A[solidus]B",
+      "condition": "approved portability policy or target restriction",
+      "code_point_fallback": "A[U+002F]B",
+      "requires_final_proposal_confirmation": true
+    },
+    {
+      "input": "A[U+002F]B",
+      "candidate": "A[U+002F]B",
+      "note": "literal token; check collisions, do not decode"
+    },
+    {
+      "input_description": "Source symbol with unidentified name and code point",
+      "candidate_fragment": "[unknown-symbol-01]",
+      "note": "Record source location/image and preserve the original title; placeholder does not resolve scientific content.",
+      "requires_final_proposal_confirmation": true
+    }
+  ],
+  "fallback_precedence": {
+    "status": "confirmed",
+    "order": [
+      "character-name token, e.g. [solidus]",
+      "explicit Unicode code-point token, e.g. [U+002F], if a reliable name representation is unavailable",
+      "numbered unresolved-symbol placeholder, e.g. [unknown-symbol-01], if both are unidentified"
+    ],
+    "note": "Computer selects levels automatically. User confirms the complete final filename proposal, not intermediate steps or individual characters. Preserve directly representable scientific notation.",
+    "requires_final_proposal_confirmation": true
+  },
+  "unresolved_symbol_policy": {
+    "status": "confirmed",
+    "example": "[unknown-symbol-01]",
+    "source_evidence_required": true,
+    "original_title_preserved": true,
+    "meaning": "Unidentified notation, not a resolved scientific interpretation.",
+    "numbering_details": "Scope, allocation and revision stability remain to be specified; preserve distinct unresolved occurrences and their source mappings.",
+    "requires_final_proposal_confirmation": true
+  },
+  "confirmation_policy": {
+    "status": "confirmed",
+    "scope": "complete final filename proposal",
+    "fallback_selection": "automatic by computer",
+    "per_step_confirmation": false,
+    "per_character_confirmation": false,
+    "required_before_application": true,
+    "display": "original title, complete proposed filename, all conversions, selected fallback levels and reasons"
+  },
+  "filename_structure": {
+    "status": "confirmed",
+    "field_separator": "__",
+    "intra_field_word_separator": "-",
+    "template": "<년도>__<저널>__<약칭>__<타이틀>__<기타 사항>",
+    "original_metadata_preserved": true,
+    "note": "Replace spaces between words; do not rewrite scientific minus signs or existing meaningful notation. Final proposal confirmation still applies."
+  },
+  "collision_policy": {
+    "status": "confirmed-pattern",
+    "suffix": "-v<n>",
+    "placement": "within other-details, before shortend-file if present; otherwise last",
+    "overwrite_existing": false,
+    "requires_final_proposal_confirmation": true,
+    "meaning": "filename collision discriminator, not publication/preprint version or execution revision",
+    "open_details": [
+      "starting number",
+      "allocation scope",
+      "existing version token handling",
+      "application-time availability validation"
+    ]
+  },
+  "shortening_policy": {
+    "status": "confirmed",
+    "marker": "shortend-file",
+    "marker_position": "last token within other-details, after collision suffix, before extension; not a separate field",
+    "requires_final_proposal_confirmation": true,
+    "preserve_original_full_title": true,
+    "validate_with": [
+      "extension",
+      "collision suffix",
+      "shortend-file marker",
+      "actual destination path"
+    ],
+    "numeric_limit_or_headroom": null,
+    "marker_field": "other-details"
+  },
+  "topic_suffix_policy": {
+    "status": "confirmed",
+    "author": "LLM proposes; user can edit",
+    "basis": "source-grounded subject/category at paper keyword specificity",
+    "brevity": "as short as practical; no numeric cap selected",
+    "order": [
+      "subject",
+      "preprint/review only when applicable",
+      "collision -v<n> when needed",
+      "shortend-file only when shortening is needed"
+    ],
+    "runtime_metadata_in_filename": false,
+    "original_keywords_separate_from_generated_label": true,
+    "requires_final_proposal_confirmation": true
+  }
 }
