@@ -168,3 +168,23 @@ Fidelity means preserving the intended source information. Reproducibility conce
 The next review should identify missing topics, incorrect status assignments, and any confusion between user controls and internal design. The user does not need to resolve every remaining detail before accepting these documents as an accurate record of the current design discussion.
 
 The user requested decision comments on related GitHub issues as well as these local documents. Posting a decision summary does not complete a design issue; publication references are recorded in design-status.md. The temporary discussion memo remains unchanged. Subsequent answers should update the decision record and the corresponding remaining question together.
+
+## Pre-implementation issue audit and agreed work order — 2026-11-15
+
+The user selected the next work order: (1) inspect user scenarios through an integrated flowchart and wireframes, then (2) decide result acceptance boundaries, including mandatory inspection, permitted override scope, and distinct completion labels. This is design work, not authorization to implement or run model evaluations. Preserve unsettled transitions as proposals in the visual artifacts.
+
+Read-only audit of the live GitHub issue bodies and completion criteria: #1–13 remain open; #14 is closed. No additional design issue currently satisfies all its existing completion criteria. Partial design progress is not implementation completion. No GitHub issue was edited or created during this audit.
+
+| Issues | Suggested update classification | Remaining boundary |
+|---|---|---|
+| #1, #3, #5, #7, #8, #9, #11 | Partial design completion; update accepted requirements and outstanding work | Full flows/defaults, comparison/alignment, source navigation, schema/handoff, lifecycle and reviewed wireframes remain incomplete as applicable |
+| #2, #4, #10, #12 | Requirements clarified; technical investigation/design remains | Capability evidence/defaults, scheduling/limits, authentication/security, usage reporting and limits |
+| #6 | Input scope clarified; delivery investigation remains | Receipt/inspection evidence, preprocessing and input-path feasibility |
+| #13 | Definitions and assessment principles established; acceptance design remains | Mode-specific criteria, reference cases, error classification and justified evaluation method |
+| #14 | Complete; retain closed state | Repository setup only |
+
+Priority body corrections: #3 still says no unit/count range is selected; #5 says voting and comparison units are unselected; #8 must distinguish the accepted conceptual internal representation/local formats from unresolved detailed schema and deferred export packaging; #9 must record manual-only retention and the accepted completion levels/termination choices without claiming a complete state machine. Earlier decision comments do not remove obsolete statements in issue bodies. #1/#8/#11/#13 span all three product modes: preserve that scope while distinguishing first-version work from deferred modes; do not close them merely because first-version requirements are recorded.
+
+Recommended new issue candidate (not issued or user-approved): `[Design] Define bibliographic naming, workspace layout, and approved rename behavior`. Existing #8 addresses representation/handoff, #9 lifecycle/provenance, and #11 GUI; none explicitly owns completion criteria for the complete naming/workspace policy. Track original bibliographic metadata and evidence, field precedence, journal mapping, Unicode/fallback confirmation, collision/shortening, accepted directory/file layout, and joint content/rename approval with failure behavior. Cross-link existing issues and give each requirement one primary owner. New issuance is not logically mandatory if an existing issue is explicitly expanded to own these criteria; explicit coverage is necessary.
+
+Do not create duplicate issues solely for override (#5), termination (#9), flowcharts/wireframes (#1/#11), or acceptance criteria (#13). These can be updated in place. Optional future splits must preserve parent completion criteria and traceability. Local commits are not yet pushed, so GitHub updates must not present unpushed branch links as already published evidence.

@@ -145,6 +145,8 @@ Adopt the proposed dependency criterion provisionally: if applying only one chan
 
 ### Latest resume point
 
+User-selected work order: first review usage scenarios using the integrated flowchart and wireframes; then decide result acceptance boundaries (mandatory inspection, override scope, and completion distinctions). See the [issue audit](open-design.md#pre-implementation-issue-audit-and-agreed-work-order--2026-11-15). This sequence does not approve unresolved workflow transitions.
+
 Preserve the six-stage workflow as an unapproved proposal, and defer review-exit/Apply approval until the complete flowchart and composed UI/functions support UX evaluation. The next design artifact should integrate override help, the provisional dependency groups, joint content/rename approval, distinct completion levels, and one-stop termination into that reviewable flow. Do not request isolated approval of the old six-stage proposal as if these later decisions did not exist. Documentation does not authorize implementation or model execution.
 
 ## Scope and basis
