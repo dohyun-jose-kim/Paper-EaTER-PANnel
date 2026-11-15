@@ -91,7 +91,7 @@ Defer the transition out of active review until a complete flowchart and suffici
 
 Other remaining work: concrete Unicode vocabulary/validation coverage, numbering scopes, suffix details and shortening strategy; structured schema fields/source coordinates; alignment criteria and figure completeness checks; permissions/deletion dependencies; instance scope and multiple tabs; CLI integration feasibility, security/encryption, onboarding, and evaluation criteria. The technical refinement section records proposals, not completed investigations or implemented features. Export packaging, detailed navigation precision, direct PDF drawing, multilingual UI, web retrieval, and RAG retain their existing deferred/later status. The later termination-choice decision opens that part of lifecycle design; detailed recovery mechanisms remain open.
 
-Historical publication checkpoint: the initial handoff used commit 22eb17d as its baseline; the consolidated handoff was subsequently committed as b99f15b. Later follow-up decisions are recorded below. Use Git history for the current commit status. Later issue comments were published, as recorded below. Local issue drafts were subsequently removed after reconciliation; Git history preserves them. Use the publication record and Git status rather than this historical checkpoint for current status. The temporary memo was later reconciled and removed; it was not the authoritative decision record.
+Historical publication checkpoint: the initial handoff used commit ffb58e1 as its baseline; the consolidated handoff was subsequently committed as b9826cf. Later follow-up decisions are recorded below. Use Git history for the current commit status. Later issue comments were published, as recorded below. Local issue drafts were subsequently removed after reconciliation; Git history preserves them. Use the publication record and Git status rather than this historical checkpoint for current status. The temporary memo was later reconciled and removed; it was not the authoritative decision record.
 
 ## Follow-up decision: pending override and deferred workflow approval
 
@@ -463,7 +463,7 @@ Unicode distinguishes canonical from compatibility equivalence; compatibility no
 Windows filename rules include reserved characters/names, trailing-character constraints, and filesystem-dependent limits. They inform the selected conservative portability policy, not universal macOS rules. Target-volume validation on macOS is still required. [Microsoft: Naming Files, Paths, and Namespaces](https://learn.microsoft.com/en-us/windows/win32/fileio/naming-a-file).
 
 
-## Decision reconciliation after commit 22eb17d
+## Decision reconciliation after commit ffb58e1
 
 The conversation since the committed baseline has been reconciled with the README, this decision record, open-design.md, and the filename mapping design. No separate feature-list artifact was requested. These records distinguish confirmed naming behavior from engineering proposals.
 
@@ -624,7 +624,7 @@ Validation: checked HTML IDs/navigation/download targets, parsed all three SVG X
 
 ## Application-wide data-flow diagram — 2026-11-15
 
-Historical: V1 introduced the whole-app diagram; V2 simplified the schema. Both were superseded by the current [V2.1 responsibility view](diagrams/app-data-flow-v2.1.html) and removed from the working tree during cleanup. Earlier artifacts are preserved in commit `a56da5b`; no obsolete version is an active design task.
+Historical: V1 introduced the whole-app diagram; V2 simplified the schema. Both were superseded by the current [V2.1 responsibility view](diagrams/app-data-flow-v2.1.html) and removed from the working tree during cleanup. Earlier artifacts are preserved in commit `68bd425`; no obsolete version is an active design task.
 
 ## Simplified application data flow V2 — 2026-11-15
 
@@ -646,6 +646,6 @@ The user subsequently accepted V2.1’s visual layout and connector cleanup. Use
 
 ## Repository cleanup and issue-body reconciliation — 2026-11-15
 
-At the user’s request, removed the published `putative-gh-issues/` drafts and superseded V1/V2/V3 whole-app diagrams from the working tree. They remain recoverable from commit `a56da5b`. Keep V2.1, the detailed review/override/termination diagram, and the unapproved six-stage proposal. The separate untracked memo was reconciled before deletion as recorded in open-design.md. Local AGENTS.md remains excluded from Git.
+At the user’s request, removed the published `putative-gh-issues/` drafts and superseded V1/V2/V3 whole-app diagrams from the working tree. They remain recoverable from commit `68bd425`. Keep V2.1, the detailed review/override/termination diagram, and the unapproved six-stage proposal. The separate untracked memo was reconciled before deletion as recorded in open-design.md. Local AGENTS.md remains excluded from Git.
 
 Issue bodies [#3](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/3), [#5](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/5), [#8](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/8) and [#9](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/9) were updated and read back successfully, reconciled with accepted decisions, remaining work and their original broad completion criteria. No issue closure, implementation, or model execution is part of this cleanup. Existing historical issue comments may link to retired draft paths; the current GitHub issues and this consolidated record are authoritative.
