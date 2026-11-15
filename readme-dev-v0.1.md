@@ -12,6 +12,14 @@ The design must address text, numbers, symbols, equations, figures, tables, capt
 
 ## Current design checkpoint — 2026-11-15
 
+Latest connector cleanup: [V2.1 — responsibility view](docs/diagrams/app-data-flow-v2.1.html) · [SVG](docs/diagrams/app-data-flow-v2.1.svg).
+
+Previous responsibility view: [V3 — user / frontend / backend / model service](docs/diagrams/app-data-flow-v3.html) · [SVG](docs/diagrams/app-data-flow-v3.svg).
+
+Simplified overview: [application data flow V2](docs/diagrams/app-data-flow-v2.html) · [SVG](docs/diagrams/app-data-flow-v2.svg). Shows independent calls, rerun feedback, and separate consumption paths.
+
+Detailed V1: [application data flow](docs/diagrams/app-data-flow.html) · [standalone SVG](docs/diagrams/app-data-flow.svg). Major phases run rightward; detailed steps run downward.
+
 Review artifact: [interactive HTML/SVG flowchart](docs/diagrams/review-workflow.html). It separates accepted requirements from provisional/open transitions. [Issue update publication record](docs/design-status.md#issue-publication-and-vector-flowchart--2026-11-15).
 
 Latest follow-up: [override help, one-stop termination, and provisional linked-change grouping](docs/design-status.md#follow-up-decision-override-help-termination-choices-and-provisional-dependencies). Joint content/rename approval and distinct processing/review/Apply completion levels are also recorded. Review-exit/Apply transitions await integrated flowchart and UX review.

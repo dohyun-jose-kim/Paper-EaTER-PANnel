@@ -192,3 +192,9 @@ Do not create duplicate issues solely for override (#5), termination (#9), flowc
 ### Audit publication follow-up
 
 The user subsequently authorized publication: comments were posted on #1–13 and the naming/workspace candidate was issued as [#15](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/15). The read-only audit statements above describe the earlier audit, not the current publication state. See the [publication record](design-status.md#issue-publication-and-vector-flowchart--2026-11-15). The first [HTML/SVG flowchart](diagrams/review-workflow.html) is now available for review; detailed wireframes and acceptance decisions remain next.
+
+## Current visual checkpoint — 2026-11-15
+
+The user accepted the [V2.1 responsibility diagram](diagrams/app-data-flow-v2.1.html) and its connector cleanup as the visual baseline. [Standalone SVG](diagrams/app-data-flow-v2.1.svg). Earlier V1/V2/V3 artifacts remain available; the requested V2.1 label follows V3 chronologically. Acceptance concerns layout and connection clarity, not the still-unapproved review-exit/Apply transitions.
+
+Next: develop review-to-final-confirmation wireframes and inspect user scenarios. Then decide result acceptance boundaries. Remaining decisions include pending override versus mandatory figure review, missing calls/query-1 failure, overridden completion status, selection persistence and protection across shutdown/resume, and partial content/rename application failure. Detailed schema/alignment and CLI/authentication feasibility remain technical design work. No product implementation is authorized by the diagrams.

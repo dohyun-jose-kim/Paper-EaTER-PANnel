@@ -1,0 +1,91 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>App flow V2.1 · Frontend / Backend</title><style>*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f7f9fb;color:#233b4a}header{padding:20px 26px;background:white}h1{margin:0;font-size:26px}p{margin:7px 0}.controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px}button,a{font:inherit;padding:8px 12px;background:white;border:1px solid #b4c6d0;border-radius:7px;color:#245879;text-decoration:none;cursor:pointer}label{display:flex;align-items:center;gap:7px}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #167cb5;outline-offset:3px}.viewport{overflow:auto;height:calc(100vh - 190px);min-height:500px;padding:20px}.viewport svg{display:block;max-width:none;height:auto}details{padding:18px 26px;background:white}li{margin:8px 0}summary{cursor:pointer}@media print{header,details{display:none}.viewport{height:auto;padding:0;overflow:visible}.viewport svg{width:100%!important}@page{size:A3 landscape;margin:6mm}}</style></head><body><header><h1>전체 app flow · V2.1 / 책임 구분</h1><p>사용자 판단, frontend의 표시·입력, backend의 생성·처리, 외부 model service를 분리했습니다. 파란 선: 데이터 / 주황 선: 사용자 응답·실행 요청 / 보라 점선 상자: 미확정 전환.</p><div class="controls"><button id="fit">Fit width</button><button id="actual">100%</button><label>Zoom <input id="zoom" type="range" min="5" max="130" value="55"><output id="scale">55%</output></label><a href="app-data-flow-v2.1.svg" download>Download SVG</a><a href="app-data-flow-v3.html">Previous layout</a></div></header><main class="viewport" id="viewport"><svg xmlns="http://www.w3.org/2000/svg" id="app-flow-v21" viewBox="0 0 3540 1430" width="3540" height="1430" role="img" aria-labelledby="title desc"><title id="title">Application responsibility and data flow V2.1</title><desc id="desc">Separate user decisions, frontend views, local backend processing, and external model services. Backend generates review items; frontend presents them; user responses return to backend. User configures and approves the execution plan. Backend dispatches independent calls through a previously connected account and CLI route. Authentication mechanisms remain open.</desc>
+<style>svg{background:#f7f9fb;font-family:system-ui,-apple-system,sans-serif}text{fill:#233b4a}.title{font-size:34px;font-weight:700}.heading{font-size:22px;font-weight:650}.copy{font-size:17px;fill:#4d6676}.small{font-size:15px;fill:#536e7e}.lane-label{font-size:16px;font-weight:700;letter-spacing:2px}.label{font-size:15px;fill:#47687b}.box{fill:white;stroke:#9ab1bf;stroke-width:2}.user{fill:#fff5df;stroke:#b69a60;stroke-width:2}.front{fill:#eaf4fc;stroke:#7a9dbb;stroke-width:2}.back{fill:#e8f5ef;stroke:#72a392;stroke-width:2}.external{fill:#efedf9;stroke:#9c8cbc;stroke-width:2}.open{fill:#f9eff7;stroke:#ae82aa;stroke-width:2;stroke-dasharray:7 5}.edge{fill:none;stroke:#4b7086;stroke-width:2.6}.response{fill:none;stroke:#ae782a;stroke-width:2.6}.control{fill:none;stroke:#ae782a;stroke-width:2.6;stroke-dasharray:10 6}.association{fill:none;stroke:#8d839d;stroke-width:2;stroke-dasharray:4 6}</style>
+<defs>
+<marker id="data" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#4b7086"/></marker>
+<marker id="action" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9" fill="#ae782a"/></marker>
+</defs>
+<text x="35" y="55" class="title">Paper-EaTER-PANnel · Who does what? / V2.1</text>
+<text x="35" y="93" class="copy">User decisions ↔ frontend views ↔ backend processing ↔ connected model service</text>
+<rect x="20" y="130" width="3500" height="200" rx="20" fill="#fffaf0" stroke="#d9e2e8"/>
+<text x="40" y="160" class="lane-label">USER · DECISIONS &amp; RESPONSES</text>
+<rect x="20" y="350" width="3500" height="220" rx="20" fill="#f0f6fb" stroke="#d9e2e8"/>
+<text x="40" y="380" class="lane-label">FRONTEND · DISPLAY &amp; INPUT</text>
+<rect x="20" y="590" width="3500" height="430" rx="20" fill="#eff7f3" stroke="#d9e2e8"/>
+<text x="40" y="620" class="lane-label">BACKEND · LOCAL PROCESSING &amp; STATE</text>
+<rect x="20" y="1040" width="3500" height="230" rx="20" fill="#f4f1fa" stroke="#d9e2e8"/>
+<text x="40" y="1070" class="lane-label">EXTERNAL · ACCOUNT / MODEL SERVICE</text>
+<g id="paper"><rect x="65" y="200" width="300" height="92" rx="15" class="user"/><text x="85" y="238" class="heading">Scientific Paper</text></g>
+<g id="plan-user"><rect x="525" y="200" width="355" height="92" rx="15" class="user"/><text x="545" y="238" class="heading">Configure &amp; approve</text><text x="545" y="270" class="copy">Scope · count · CLI / model</text></g>
+<g id="review-user"><rect x="1950" y="200" width="385" height="92" rx="15" class="user"/><text x="1970" y="238" class="heading">Inspect &amp; respond</text><text x="1970" y="270" class="copy">Select / edit / request rerun</text></g>
+<g id="approval-user"><rect x="2500" y="200" width="355" height="92" rx="15" class="user"/><text x="2520" y="238" class="heading">Approve changes</text><text x="2520" y="270" class="copy">Content + names together</text></g>
+<g id="consumer"><rect x="3030" y="200" width="430" height="92" rx="15" class="user"/><text x="3050" y="238" class="heading">Read / manually hand off</text></g>
+<g id="import-ui"><rect x="65" y="415" width="300" height="100" rx="15" class="front"/><text x="85" y="453" class="heading">Import view</text><text x="85" y="485" class="copy">Paper + workspace</text></g>
+<g id="plan-ui"><rect x="525" y="415" width="355" height="100" rx="15" class="front"/><text x="545" y="453" class="heading">Execution plan UI</text><text x="545" y="485" class="copy">Options · scope preview</text></g>
+<g id="review-ui"><rect x="1950" y="415" width="385" height="100" rx="15" class="front"/><text x="1970" y="453" class="heading">Review workspace</text><text x="1970" y="485" class="copy">Source + candidates + proposals</text></g>
+<g id="approval-ui"><rect x="2500" y="415" width="355" height="100" rx="15" class="open"/><text x="2520" y="453" class="heading">Final confirmation</text><text x="2520" y="485" class="copy">Changes + naming preview</text></g>
+<g id="result-ui"><rect x="3030" y="415" width="430" height="100" rx="15" class="front"/><text x="3050" y="453" class="heading">Result view / download</text></g>
+<path d="M215 292 V415" class="response" marker-end="url(#action)"/>
+<path d="M700 292 V415" class="response" marker-end="url(#action)"/>
+<path d="M2675 292 V415" class="response" marker-end="url(#action)"/>
+<path d="M600 415 V292" class="edge" marker-end="url(#data)"/>
+<path d="M2555 415 V292" class="edge" marker-end="url(#data)"/>
+<path d="M2090 415 V292" class="edge" marker-end="url(#data)"/>
+<text x="1970" y="382" class="label">display</text>
+<path d="M2225 292 V415" class="response" marker-end="url(#action)"/>
+<text x="2238" y="382" class="label">response</text>
+<path d="M3245 415 V292" class="edge" marker-end="url(#data)"/>
+<g id="source-state"><rect x="65" y="690" width="300" height="112" rx="15" class="back"/><text x="85" y="728" class="heading">Source workspace</text><text x="85" y="760" class="copy">Original PDF + source evidence</text></g>
+<g id="execution-request"><rect x="525" y="690" width="355" height="112" rx="15" class="back"/><text x="545" y="728" class="heading">Execution request</text><text x="545" y="760" class="copy">Approved plan + scheduler</text></g>
+<g id="calls"><rect x="990" y="665" width="405" height="170" rx="15" class="back"/><text x="1010" y="703" class="heading">Independent calls</text><text x="1010" y="735" class="copy">Per-call CLI route</text></g>
+<rect x="1010" y="765" width="110" height="48" rx="9" fill="white" stroke="#80a798"/>
+<text x="1045" y="796" class="heading">1</text>
+<rect x="1135" y="765" width="110" height="48" rx="9" fill="white" stroke="#80a798"/>
+<text x="1170" y="796" class="heading">2</text>
+<rect x="1260" y="765" width="110" height="48" rx="9" fill="white" stroke="#80a798"/>
+<text x="1295" y="796" class="heading">N</text>
+<text x="1010" y="860" class="small">1 / 3 / 5 total; concurrency configurable</text>
+<g id="candidates"><rect x="1490" y="665" width="355" height="112" rx="15" class="back"/><text x="1510" y="703" class="heading">Candidate results</text><text x="1510" y="735" class="copy">Content · bibliography · provenance</text></g>
+<g id="compare"><rect x="1490" y="845" width="355" height="112" rx="15" class="back"/><text x="1510" y="883" class="heading">Compare</text><text x="1510" y="915" class="copy">Structure → content</text></g>
+<g id="review-items"><rect x="1950" y="665" width="385" height="112" rx="15" class="back"/><text x="1970" y="703" class="heading">Generate review items</text><text x="1970" y="735" class="copy">Pending · source links · proposals</text></g>
+<g id="selections"><rect x="1950" y="845" width="385" height="112" rx="15" class="back"/><text x="1970" y="883" class="heading">Record user responses</text><text x="1970" y="915" class="copy">Selections ≠ approval or Apply</text></g>
+<g id="apply"><rect x="2500" y="690" width="355" height="112" rx="15" class="open"/><text x="2520" y="728" class="heading">Apply approved change set</text><text x="2520" y="760" class="copy">Review-exit / transaction open</text></g>
+<g id="current"><rect x="3030" y="690" width="430" height="112" rx="15" class="back"/><text x="3050" y="728" class="heading">Current + outcome record</text><text x="3050" y="760" class="copy">Approval ≠ successful application</text></g>
+<path d="M215 515 V690" class="edge" marker-end="url(#data)"/>
+<path d="M365 746 H525" class="edge" marker-end="url(#data)"/>
+<path d="M700 515 V690" class="response" marker-end="url(#action)"/>
+<path d="M880 746 H990" class="edge" marker-end="url(#data)"/>
+<path d="M1667 777 V845" class="edge" marker-end="url(#data)"/>
+<path d="M1845 900 H1900 V720 H1950" class="edge" marker-end="url(#data)"/>
+<path d="M2065 665 V515" class="edge" marker-end="url(#data)"/>
+<text x="1958" y="630" class="label">review items</text>
+<path d="M2230 515 V605 H2390 V815 H2220 V845" class="response" marker-end="url(#action)"/>
+<text x="2250" y="604" class="label">user input</text>
+<path d="M2335 915 H2455 V465 H2500" class="edge" marker-end="url(#data)"/>
+<text x="2470" y="865" class="label">change set</text>
+<path d="M2675 515 V690" class="response" marker-end="url(#action)"/>
+<text x="2690" y="620" class="label">explicit approval</text>
+<path d="M2855 746 H3030" class="edge" marker-end="url(#data)"/>
+<path d="M3245 690 V515" class="edge" marker-end="url(#data)"/>
+<g id="account"><rect x="525" y="1120" width="355" height="105" rx="15" class="external"/><text x="545" y="1158" class="heading">Connected account / route</text><text x="545" y="1190" class="copy">Preconfigured by the user</text></g>
+<g id="model-service"><rect x="1020" y="1120" width="740" height="105" rx="15" class="external"/><text x="1040" y="1158" class="heading">Selected LLM service</text><text x="1040" y="1190" class="copy">CLI request / model response</text></g>
+<path d="M1095 835 V1120" class="edge" marker-end="url(#data)"/>
+<text x="1108" y="1030" class="label">scoped input</text>
+
+<text x="1465" y="1035" class="label">per-call response</text>
+<path d="M880 1172 H1020" class="association" marker-end="url(#data)"/>
+<text x="550" y="1253" class="small">Authentication mechanism remains open</text>
+<path d="M215 690 V625 H1910 V465 H1950" class="association" marker-end="url(#data)"/>
+<text x="1380" y="615" class="small">source evidence</text>
+<path d="M2140 957 V1000 H465 V465 H525" class="control" marker-end="url(#action)"/>
+<text x="840" y="987" class="label">Rerun request → revise plan → user approval</text>
+<text x="1965" y="814" class="small">Current document protected during active review</text>
+<text x="2500" y="860" class="small">Exit / freeze / unlock semantics unapproved</text>
+<rect x="20" y="1300" width="3500" height="100" rx="16" fill="#e9eff4"/>
+<text x="45" y="1340" class="lane-label">LOCAL STORAGE</text>
+<text x="45" y="1375" class="copy">source/ · runs/ · review/ · current/</text>
+<text x="970" y="1340" class="lane-label">CONCURRENCY</text>
+<text x="970" y="1375" class="copy">Other papers and approved calls continue during review.</text>
+<text x="2200" y="1340" class="lane-label">LIFECYCLE</text>
+<text x="2200" y="1375" class="copy">Background / force stop / prepare &amp; exit</text>
+<g id="model-response-route"><path d="M1600 1120 V1065 H1450 V1012 C1434 1009 1434 991 1450 988 V720 H1490" fill="none" stroke="#f7f9fb" stroke-width="9"/><path d="M1600 1120 V1065 H1450 V1012 C1434 1009 1434 991 1450 988 V720 H1490" class="edge" marker-end="url(#data)"/></g>
+</svg></main><details><summary>V2.1 연결선 정리 및 책임 구분</summary><p>Model 응답은 candidate의 왼쪽으로, 비교 결과는 review 항목의 왼쪽으로 들어갑니다. 사용자 입력은 응답 기록 상자의 위쪽으로 들어가며, change set은 오른쪽에서 나옵니다. 선의 bridge는 연결되지 않은 교차입니다.</p><ul><li>Execution plan: frontend가 선택지와 범위를 보여주고, 사용자가 설정·승인합니다. Backend는 승인된 요청을 처리합니다.</li><li>Review: backend가 비교 결과와 review 항목을 생성하고 frontend가 표시합니다. 사용자는 선택·수정·rerun 요청을 입력합니다. Backend는 응답을 별도로 기록합니다.</li><li>Independent calls: backend가 CLI 호출을 관리합니다. 사용자가 미리 연결한 계정·CLI 경로를 통해 선택한 model service가 요청을 처리합니다. 계정 정보는 논문 내용의 일부가 아닙니다.</li><li>상자 사이 연결은 책임과 데이터 의존성을 나타냅니다. REST API, IPC, process 구성이나 authentication 구현을 선택한 것은 아닙니다.</li><li>Review 중 Apply는 차단됩니다. Review 종료에서 Apply까지의 정확한 전환과 실패 복구는 미승인 상태입니다.</li><li>이 그림의 Compare는 논리적 역할입니다. 별도 LLM call을 자동 생성하거나 추가 실행 권한을 뜻하지 않습니다.</li></ul></details><script>const svg=document.getElementById('app-flow-v21'),view=document.getElementById('viewport'),slider=document.getElementById('zoom'),label=document.getElementById('scale');function setZoom(n){svg.style.width=(3540*n/100)+'px';slider.value=n;label.textContent=Math.round(n)+'%'}slider.addEventListener('input',()=>setZoom(Number(slider.value)));document.getElementById('fit').addEventListener('click',()=>setZoom(Math.max(5,(view.clientWidth-40)/3540*100)));document.getElementById('actual').addEventListener('click',()=>setZoom(100));setZoom(55);</script></body></html>

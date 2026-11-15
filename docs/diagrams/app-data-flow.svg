@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="app-data-flow" viewBox="0 0 4060 1920" width="4060" height="1920" role="img" aria-labelledby="title desc">
+<title id="title">Paper-EaTER-PANnel: application data flow including review</title><desc id="desc">Eight phases run left to right. Within each phase, steps run downward. Original PDF and scoped configuration pass through CLI and external model services to separate structured candidates, comparison, human review, approved application, and local reading or manual handoff. Storage and lifecycle controls are shown below. Open decisions are explicitly marked.</desc>
+<style>svg{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f5f7fa;color:#203444}text{fill:#203444}.title{font-size:40px;font-weight:700}.subtitle{font-size:20px;fill:#526777}.lane{fill:#fff;stroke:#d7e1e8;stroke-width:2}.phase{font-size:22px;font-weight:700}.number{font-size:14px;fill:#426778;letter-spacing:2px}.heading{font-size:19px;font-weight:650}.copy{font-size:15px}.badge{font-size:11px;font-weight:700;letter-spacing:1px}.node rect{fill:#edf7f4;stroke:#72a99b;stroke-width:1.5}.open rect{fill:#f5effb;stroke:#9c7cb3;stroke-dasharray:4 5}.provisional rect{fill:#fff5e3;stroke:#b78a45;stroke-dasharray:9 4}.external rect{fill:#edf3ff;stroke:#6488b8;stroke-width:2}.store rect{fill:#eaf1f7;stroke:#7594aa;stroke-width:1.5}.edge{fill:none;stroke:#405f70;stroke-width:2.4}.control{fill:none;stroke:#a06a22;stroke-width:2.5;stroke-dasharray:9 6}.write{fill:none;stroke:#447596;stroke-width:2;stroke-dasharray:3 4}.label{font-size:14px;fill:#425f70}.band{fill:#e9eef3;stroke:#c6d3de}.small{font-size:14px;fill:#526777}.major{fill:none;stroke:#203444;stroke-width:4}.highlight rect{stroke:#167cb5;stroke-width:4}</style>
+<defs><marker id="data-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#405f70"/></marker><marker id="control-arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10" fill="#a06a22"/></marker></defs>
+<text x="40" y="65" class="title">Paper-EaTER-PANnel · Application data flow</text>
+<text x="40" y="103" class="subtitle">First-version documentation path, review included · Conceptual design, not a verified implementation or approved state machine</text>
+<rect x="2590" y="48" width="20" height="20" rx="4" fill="#edf7f4" stroke="#718695"/>
+<text x="2619" y="65" class="small">Accepted</text>
+<rect x="2875" y="48" width="20" height="20" rx="4" fill="#fff5e3" stroke="#718695"/>
+<text x="2904" y="65" class="small">Provisional</text>
+<rect x="3160" y="48" width="20" height="20" rx="4" fill="#f5effb" stroke="#718695"/>
+<text x="3189" y="65" class="small">Open / unapproved</text>
+<rect x="3445" y="48" width="20" height="20" rx="4" fill="#edf3ff" stroke="#718695"/>
+<text x="3474" y="65" class="small">External model service</text>
+<rect x="3730" y="48" width="20" height="20" rx="4" fill="#eaf1f7" stroke="#718695"/>
+<text x="3759" y="65" class="small">Local storage</text>
+<rect class="lane" x="40" y="205" width="410" height="990" rx="20"/>
+<text x="65" y="242" class="number">PHASE 01</text>
+<text x="65" y="275" class="phase">Input &amp; workspace</text>
+<text x="65" y="1175" class="label">Source PDF + local context</text>
+<path class="major" d="M340 155 H575" marker-end="url(#data-arrow)"/>
+<text x="54" y="162" class="number">01</text>
+<rect class="lane" x="540" y="205" width="410" height="990" rx="20"/>
+<text x="565" y="242" class="number">PHASE 02</text>
+<text x="565" y="275" class="phase">Scope &amp; execution plan</text>
+<text x="565" y="1175" class="label">Explicitly approved call configuration</text>
+<path class="major" d="M840 155 H1075" marker-end="url(#data-arrow)"/>
+<text x="554" y="162" class="number">02</text>
+<rect class="lane" x="1040" y="205" width="410" height="990" rx="20"/>
+<text x="1065" y="242" class="number">PHASE 03</text>
+<text x="1065" y="275" class="phase">CLI / model execution</text>
+<text x="1065" y="1175" class="label">Independent per-call responses</text>
+<path class="major" d="M1340 155 H1575" marker-end="url(#data-arrow)"/>
+<text x="1054" y="162" class="number">03</text>
+<rect class="lane" x="1540" y="205" width="410" height="990" rx="20"/>
+<text x="1565" y="242" class="number">PHASE 04</text>
+<text x="1565" y="275" class="phase">Candidate representation</text>
+<text x="1565" y="1175" class="label">Structured results + source evidence</text>
+<path class="major" d="M1840 155 H2075" marker-end="url(#data-arrow)"/>
+<text x="1554" y="162" class="number">04</text>
+<rect class="lane" x="2040" y="205" width="410" height="990" rx="20"/>
+<text x="2065" y="242" class="number">PHASE 05</text>
+<text x="2065" y="275" class="phase">Alignment &amp; comparison</text>
+<text x="2065" y="1175" class="label">Candidates + pending reasons</text>
+<path class="major" d="M2340 155 H2575" marker-end="url(#data-arrow)"/>
+<text x="2054" y="162" class="number">05</text>
+<rect class="lane" x="2540" y="205" width="410" height="990" rx="20"/>
+<text x="2565" y="242" class="number">PHASE 06</text>
+<text x="2565" y="275" class="phase">Human review &amp; selection</text>
+<text x="2565" y="1175" class="label">Selected changes + approval targets</text>
+<path class="major" d="M2840 155 H3075" marker-end="url(#data-arrow)"/>
+<text x="2554" y="162" class="number">06</text>
+<rect class="lane" x="3040" y="205" width="410" height="990" rx="20"/>
+<text x="3065" y="242" class="number">PHASE 07</text>
+<text x="3065" y="275" class="phase">Approval &amp; application</text>
+<text x="3065" y="1175" class="label">Applied content + separate outcome record</text>
+<path class="major" d="M3340 155 H3575" marker-end="url(#data-arrow)"/>
+<text x="3054" y="162" class="number">07</text>
+<rect class="lane" x="3540" y="205" width="410" height="990" rx="20"/>
+<text x="3565" y="242" class="number">PHASE 08</text>
+<text x="3565" y="275" class="phase">Reading &amp; handoff</text>
+<text x="3565" y="1175" class="label">Local results + manual downstream use</text>
+<g id="input" class="node accepted"><rect x="65" y="310" width="360" height="130" rx="12"/><text x="82" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="82" y="360" class="heading">Select local paper(s)</text><text x="82" y="386" class="copy">English online academic PDFs</text><text x="82" y="407" class="copy">Original text, figures and references</text></g>
+<path class="edge" d="M245 440 V490" marker-end="url(#data-arrow)"/>
+<g id="root" class="node accepted"><rect x="65" y="490" width="360" height="130" rx="12"/><text x="82" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="82" y="540" class="heading">Choose workspace root</text><text x="82" y="566" class="copy">Local storage chosen by the user</text><text x="82" y="587" class="copy">One paper context per processor call</text></g>
+<path class="edge" d="M245 620 V670" marker-end="url(#data-arrow)"/>
+<g id="source" class="node accepted"><rect x="65" y="670" width="360" height="130" rx="12"/><text x="82" y="693" class="badge">ACCEPTED REQUIREMENT</text><text x="82" y="720" class="heading">Preserve source &amp; links</text><text x="82" y="746" class="copy">Store the input version unchanged</text><text x="82" y="767" class="copy">Web retrieval is a later possibility</text></g>
+<path class="edge" d="M245 800 V850" marker-end="url(#data-arrow)"/>
+<g id="prep" class="node open"><rect x="65" y="850" width="360" height="130" rx="12"/><text x="82" y="873" class="badge">OPEN / NOT APPROVED</text><text x="82" y="900" class="heading">Prepare source for delivery</text><text x="82" y="926" class="copy">Reuse text; OCR where needed?</text><text x="82" y="947" class="copy">Delivery / preprocessing unverified</text></g>
+<path class="edge" d="M245 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d1" class="node accepted"><rect x="65" y="1030" width="360" height="110" rx="12"/><text x="82" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="82" y="1080" class="heading">Source context</text><text x="82" y="1106" class="copy">PDF + available text/image evidence</text><text x="82" y="1127" class="copy">Stable IDs / mapping details open</text></g>
+<path class="edge" d="M245 1140 V1215 H495 V375 H565" marker-end="url(#data-arrow)"/>
+<g id="scope" class="node accepted"><rect x="565" y="310" width="360" height="130" rx="12"/><text x="582" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="582" y="360" class="heading">Choose processing scope</text><text x="582" y="386" class="copy">Whole paper or selected portion</text><text x="582" y="407" class="copy">Page ranges / document elements</text></g>
+<path class="edge" d="M745 440 V490" marker-end="url(#data-arrow)"/>
+<g id="suggest" class="node accepted"><rect x="565" y="490" width="360" height="130" rx="12"/><text x="582" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="582" y="540" class="heading">Compare scope choices</text><text x="582" y="566" class="copy">App proposal OR direct selection</text><text x="582" y="587" class="copy">Show actual coverage and exclusions</text></g>
+<path class="edge" d="M745 620 V670" marker-end="url(#data-arrow)"/>
+<g id="settings" class="node accepted"><rect x="565" y="670" width="360" height="130" rx="12"/><text x="582" y="693" class="badge">ACCEPTED REQUIREMENT</text><text x="582" y="720" class="heading">Configure independent calls</text><text x="582" y="746" class="copy">Total 1 / 3 / 5 calls for this scope</text><text x="582" y="767" class="copy">CLI + model selectable per call</text></g>
+<path class="edge" d="M745 800 V850" marker-end="url(#data-arrow)"/>
+<g id="execute-approval" class="node accepted"><rect x="565" y="850" width="360" height="130" rx="12"/><text x="582" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="582" y="900" class="heading">Approve execution</text><text x="582" y="926" class="copy">Proposal requires user confirmation</text><text x="582" y="947" class="copy">Extra calls are not automatic</text></g>
+<path class="edge" d="M745 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d2" class="node accepted"><rect x="565" y="1030" width="360" height="110" rx="12"/><text x="582" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="582" y="1080" class="heading">Approved execution request</text><text x="582" y="1106" class="copy">Scope + count + per-call settings</text><text x="582" y="1127" class="copy">Defaults / limits still require design</text></g>
+<path class="edge" d="M745 1140 V1215 H995 V375 H1065" marker-end="url(#data-arrow)"/>
+<g id="queue" class="node accepted"><rect x="1065" y="310" width="360" height="130" rx="12"/><text x="1082" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="1082" y="360" class="heading">Schedule approved work</text><text x="1082" y="386" class="copy">One application instance</text><text x="1082" y="407" class="copy">Parallel papers / calls inside it</text></g>
+<path class="edge" d="M1245 440 V490" marker-end="url(#data-arrow)"/>
+<g id="cli" class="node accepted"><rect x="1065" y="490" width="360" height="130" rx="12"/><text x="1082" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="1082" y="540" class="heading">Local CLI route</text><text x="1082" y="566" class="copy">Codex CLI or Claude Code</text><text x="1082" y="587" class="copy">Adapter / authentication not verified</text></g>
+<path class="edge" d="M1245 620 V670" marker-end="url(#data-arrow)"/>
+<g id="service" class="node external"><rect x="1065" y="670" width="360" height="130" rx="12"/><text x="1082" y="693" class="badge">EXTERNAL SERVICE / PERMITTED INPUT</text><text x="1082" y="720" class="heading">Selected model service</text><text x="1082" y="746" class="copy">Necessary source input may be sent</text><text x="1082" y="767" class="copy">Local app does not mean local model</text></g>
+<path class="edge" d="M1245 800 V850" marker-end="url(#data-arrow)"/>
+<g id="response" class="node accepted"><rect x="1065" y="850" width="360" height="130" rx="12"/><text x="1082" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="1082" y="900" class="heading">Receive independent outputs</text><text x="1082" y="926" class="copy">Keep each call result separately</text><text x="1082" y="947" class="copy">Failed / missing calls stay visible</text></g>
+<path class="edge" d="M1245 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d3" class="node accepted"><rect x="1065" y="1030" width="360" height="110" rx="12"/><text x="1082" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="1082" y="1080" class="heading">Per-call result &amp; provenance</text><text x="1082" y="1106" class="copy">Run / call / CLI / model / scope</text><text x="1082" y="1127" class="copy">Receipt vs inspection evidence open</text></g>
+<path class="edge" d="M1245 1140 V1215 H1495 V375 H1565" marker-end="url(#data-arrow)"/>
+<g id="structure" class="node accepted"><rect x="1565" y="310" width="360" height="130" rx="12"/><text x="1582" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="1582" y="360" class="heading">Represent document structure</text><text x="1582" y="386" class="copy">Section / subsection → paragraphs</text><text x="1582" y="407" class="copy">Paragraph-level viewing</text></g>
+<path class="edge" d="M1745 440 V490" marker-end="url(#data-arrow)"/>
+<g id="elements" class="node accepted"><rect x="1565" y="490" width="360" height="130" rx="12"/><text x="1582" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="1582" y="540" class="heading">Preserve content elements</text><text x="1582" y="566" class="copy">Text, figures, captions, tables</text><text x="1582" y="587" class="copy">Equations, references, relationships</text></g>
+<path class="edge" d="M1745 620 V670" marker-end="url(#data-arrow)"/>
+<g id="evidence" class="node accepted"><rect x="1565" y="670" width="360" height="130" rx="12"/><text x="1582" y="693" class="badge">ACCEPTED REQUIREMENT</text><text x="1582" y="720" class="heading">Attach evidence &amp; metadata</text><text x="1582" y="746" class="copy">Source mapping + uncertainty</text><text x="1582" y="767" class="copy">Bibliography ≠ execution provenance</text></g>
+<path class="edge" d="M1745 800 V850" marker-end="url(#data-arrow)"/>
+<g id="naming" class="node accepted"><rect x="1565" y="850" width="360" height="130" rx="12"/><text x="1582" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="1582" y="900" class="heading">Propose complete names</text><text x="1582" y="926" class="copy">Bibliography → naming fields</text><text x="1582" y="947" class="copy">Conversions / collisions need review</text></g>
+<path class="edge" d="M1745 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d4" class="node accepted"><rect x="1565" y="1030" width="360" height="110" rx="12"/><text x="1582" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="1582" y="1080" class="heading">Separate candidate package</text><text x="1582" y="1106" class="copy">document.json + bibliography + assets</text><text x="1582" y="1127" class="copy">Naming proposal; current unchanged</text></g>
+<path class="edge" d="M1745 1140 V1215 H1995 V375 H2065" marker-end="url(#data-arrow)"/>
+<g id="align" class="node accepted"><rect x="2065" y="310" width="360" height="130" rx="12"/><text x="2082" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="2082" y="360" class="heading">Align structural elements</text><text x="2082" y="386" class="copy">Compare structure before content</text><text x="2082" y="407" class="copy">Exact alignment algorithm is open</text></g>
+<path class="edge" d="M2245 440 V490" marker-end="url(#data-arrow)"/>
+<g id="content" class="node accepted"><rect x="2065" y="490" width="360" height="130" rx="12"/><text x="2082" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="2082" y="540" class="heading">Compare aligned content</text><text x="2082" y="566" class="copy">Characters, numbers, signs, relations</text><text x="2082" y="587" class="copy">Provenance changes ≠ disagreement</text></g>
+<path class="edge" d="M2245 620 V670" marker-end="url(#data-arrow)"/>
+<g id="pending-detect" class="node accepted"><rect x="2065" y="670" width="360" height="130" rx="12"/><text x="2082" y="693" class="badge">ACCEPTED REQUIREMENT</text><text x="2082" y="720" class="heading">Assign pending reasons</text><text x="2082" y="746" class="copy">Disagreement / uncertainty → pending</text><text x="2082" y="767" class="copy">Majority does not clear disagreement</text></g>
+<path class="edge" d="M2245 800 V850" marker-end="url(#data-arrow)"/>
+<g id="figures" class="node accepted"><rect x="2065" y="850" width="360" height="130" rx="12"/><text x="2082" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="2082" y="900" class="heading">Require every figure review</text><text x="2082" y="926" class="copy">Identity, full area / panels, caption</text><text x="2082" y="947" class="copy">Agreement is not source verification</text></g>
+<path class="edge" d="M2245 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d5" class="node accepted"><rect x="2065" y="1030" width="360" height="110" rx="12"/><text x="2082" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="2082" y="1080" class="heading">Comparison &amp; pending set</text><text x="2082" y="1106" class="copy">Candidates beside source evidence</text><text x="2082" y="1127" class="copy">Other work continues independently</text></g>
+<path class="edge" d="M2245 1140 V1215 H2495 V375 H2565" marker-end="url(#data-arrow)"/>
+<g id="inspect" class="node accepted"><rect x="2565" y="310" width="360" height="130" rx="12"/><text x="2582" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="2582" y="360" class="heading">Inspect all approval targets</text><text x="2582" y="386" class="copy">Title first; structured output visible</text><text x="2582" y="407" class="copy">Source, bibliography, names, metadata</text></g>
+<path class="edge" d="M2745 440 V490" marker-end="url(#data-arrow)"/>
+<g id="selection" class="node accepted"><rect x="2565" y="490" width="360" height="130" rx="12"/><text x="2582" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="2582" y="540" class="heading">Select element-level results</text><text x="2582" y="566" class="copy">Mix choices from different calls</text><text x="2582" y="587" class="copy">Current document: Apply blocked</text></g>
+<path class="edge" d="M2745 620 V670" marker-end="url(#data-arrow)"/>
+<g id="dependency" class="node provisional"><rect x="2565" y="670" width="360" height="130" rx="12"/><text x="2582" y="693" class="badge">PROVISIONAL POLICY</text><text x="2582" y="720" class="heading">Group necessary dependencies</text><text x="2582" y="746" class="copy">Show included changes and reasons</text><text x="2582" y="767" class="copy">User confirms the proposed group</text></g>
+<path class="edge" d="M2745 800 V850" marker-end="url(#data-arrow)"/>
+<g id="override" class="node accepted"><rect x="2565" y="850" width="360" height="130" rx="12"/><text x="2582" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="2582" y="900" class="heading">Resolve pending / explicit override</text><text x="2582" y="926" class="copy">Default: resolve all; else confirm</text><text x="2582" y="947" class="copy">&gt;½ → majority; else query 1 + warning</text></g>
+<path class="edge" d="M2745 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d6" class="node accepted"><rect x="2565" y="1030" width="360" height="110" rx="12"/><text x="2582" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="2582" y="1080" class="heading">Visible change set</text><text x="2582" y="1106" class="copy">Content + file/folder rename together</text><text x="2582" y="1127" class="copy">Selection alone is not approval</text></g>
+<path class="edge" d="M2745 1140 V1215 H2995 V375 H3065" marker-end="url(#data-arrow)"/>
+<g id="exit-review" class="node open"><rect x="3065" y="310" width="360" height="130" rx="12"/><text x="3082" y="333" class="badge">OPEN / NOT APPROVED</text><text x="3082" y="360" class="heading">Leave review / freeze selection?</text><text x="3082" y="386" class="copy">Finish review / Back to review?</text><text x="3082" y="407" class="copy">Exact transition not approved</text></g>
+<path class="edge" d="M3245 440 V490" marker-end="url(#data-arrow)"/>
+<g id="joint-approval" class="node accepted"><rect x="3065" y="490" width="360" height="130" rx="12"/><text x="3082" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="3082" y="540" class="heading">Joint final approval</text><text x="3082" y="566" class="copy">Inspect content + file/folder names</text><text x="3082" y="587" class="copy">Final confirmation layout is open</text></g>
+<path class="edge" d="M3245 620 V670" marker-end="url(#data-arrow)"/>
+<g id="apply" class="node open"><rect x="3065" y="670" width="360" height="130" rx="12"/><text x="3082" y="693" class="badge">OPEN / NOT APPROVED</text><text x="3082" y="720" class="heading">Apply approved changes</text><text x="3082" y="746" class="copy">Only outside active review</text><text x="3082" y="767" class="copy">Transaction / rollback is open</text></g>
+<path class="edge" d="M3245 800 V850" marker-end="url(#data-arrow)"/>
+<g id="outcome" class="node accepted"><rect x="3065" y="850" width="360" height="130" rx="12"/><text x="3082" y="873" class="badge">ACCEPTED REQUIREMENT</text><text x="3082" y="900" class="heading">Record approval &amp; outcome</text><text x="3082" y="926" class="copy">Approval ≠ successful application</text><text x="3082" y="947" class="copy">Content saved / rename failed? Open</text></g>
+<path class="edge" d="M3245 980 V1030" marker-end="url(#data-arrow)"/>
+<g id="d7" class="node accepted"><rect x="3065" y="1030" width="360" height="110" rx="12"/><text x="3082" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="3082" y="1080" class="heading">Updated current + outcome</text><text x="3082" y="1106" class="copy">All three completion levels required</text><text x="3082" y="1127" class="copy">Override aggregation remains open</text></g>
+<path class="edge" d="M3245 1140 V1215 H3495 V375 H3565" marker-end="url(#data-arrow)"/>
+<g id="read" class="node accepted"><rect x="3565" y="310" width="360" height="130" rx="12"/><text x="3582" y="333" class="badge">ACCEPTED REQUIREMENT</text><text x="3582" y="360" class="heading">Read in the application</text><text x="3582" y="386" class="copy">Human-readable source documentation</text><text x="3582" y="407" class="copy">No inserted summary / translation</text></g>
+<path class="edge" d="M3745 440 V490" marker-end="url(#data-arrow)"/>
+<g id="reuse" class="node accepted"><rect x="3565" y="490" width="360" height="130" rx="12"/><text x="3582" y="513" class="badge">ACCEPTED REQUIREMENT</text><text x="3582" y="540" class="heading">Inspect history &amp; source links</text><text x="3582" y="566" class="copy">Previous candidates remain available</text><text x="3582" y="587" class="copy">Reuse rules still need specification</text></g>
+<path class="edge" d="M3745 620 V670" marker-end="url(#data-arrow)"/>
+<g id="handoff" class="node accepted"><rect x="3565" y="670" width="360" height="130" rx="12"/><text x="3582" y="693" class="badge">ACCEPTED REQUIREMENT</text><text x="3582" y="720" class="heading">User downloads / transfers</text><text x="3582" y="746" class="copy">Manual handoff to another LLM</text><text x="3582" y="767" class="copy">Export packaging / image delivery open</text></g>
+<path class="edge" d="M3925 735 H3945 V1085 H3925" marker-end="url(#data-arrow)"/>
+<g id="later-modes" class="node open"><rect x="3565" y="850" width="360" height="130" rx="12"/><text x="3582" y="873" class="badge">OPEN / NOT APPROVED</text><text x="3582" y="900" class="heading">Other required product modes</text><text x="3582" y="926" class="copy">Source-aware reading; combined mode</text><text x="3582" y="947" class="copy">Detailed future flows not yet designed</text></g>
+<g id="d8" class="node accepted"><rect x="3565" y="1030" width="360" height="110" rx="12"/><text x="3582" y="1053" class="badge">ACCEPTED REQUIREMENT</text><text x="3582" y="1080" class="heading">Consumer boundary</text><text x="3582" y="1106" class="copy">Human or downstream LLM</text><text x="3582" y="1127" class="copy">No automatic cross-paper integration</text></g>
+<path class="control" d="M2745 1140 V1290 H970 V555 H925" marker-end="url(#control-arrow)"/>
+<text x="1190" y="1278" class="label">USER-APPROVED RERUN → scope / count / CLI / model → fresh candidates; keep current and previous results</text>
+<text x="2350" y="1320" class="small">No suitable candidate? Rerun during review. Optional review chat may suggest changes; conversation alone does not Apply.</text>
+<text x="40" y="1370" class="phase">LOCAL WORKSPACE · source / runs / current / review · metadata schema and write transactions remain to be specified</text>
+<g id="store-40" class="node store"><rect x="40" y="1400" width="780" height="130" rx="12"/><text x="57" y="1423" class="badge">LOCAL STORAGE / ACCEPTED BASELINE</text><text x="57" y="1450" class="heading">source/ + manifest.json</text><text x="57" y="1476" class="copy">Original PDF / input identity / source evidence</text><text x="57" y="1497" class="copy">Read for model input, comparison and human review</text></g>
+<g id="store-860" class="node store"><rect x="860" y="1400" width="1060" height="130" rx="12"/><text x="877" y="1423" class="badge">LOCAL STORAGE / ACCEPTED BASELINE</text><text x="877" y="1450" class="heading">runs/&lt;run-id&gt;/calls/&lt;call-id&gt;/</text><text x="877" y="1476" class="copy">provenance.json + result/ · per-call structured candidates and assets</text><text x="877" y="1497" class="copy">Persist candidate history; manual deletion only; never overwrite current during review</text></g>
+<g id="store-1960" class="node store"><rect x="1960" y="1400" width="1040" height="130" rx="12"/><text x="1977" y="1423" class="badge">LOCAL STORAGE / ACCEPTED BASELINE</text><text x="1977" y="1450" class="heading">review/</text><text x="1977" y="1476" class="copy">proposals/&lt;id&gt;.json · events.jsonl · review-summary.md</text><text x="1977" y="1497" class="copy">Selected changes, approval decisions, application outcomes; precise fields open</text></g>
+<g id="store-3040" class="node store"><rect x="3040" y="1400" width="980" height="130" rx="12"/><text x="3057" y="1423" class="badge">LOCAL STORAGE / ACCEPTED BASELINE</text><text x="3057" y="1450" class="heading">current/</text><text x="3057" y="1476" class="copy">Markdown sections + document.json + bibliography.json + citation.bib + assets</text><text x="3057" y="1497" class="copy">Current content changes through approved Apply; original bibliographic notation preserved</text></g>
+<path class="write" d="M245 1195 V1400" marker-end="url(#data-arrow)"/>
+<text x="254" y="1355" class="small">source retained</text>
+<path class="write" d="M1745 1195 V1400" marker-end="url(#data-arrow)"/>
+<text x="1754" y="1355" class="small">candidate writes</text>
+<path class="write" d="M2945 1195 V1400" marker-end="url(#data-arrow)"/>
+<text x="2954" y="1355" class="small">review / outcome records</text>
+<path class="write" d="M3545 1195 V1400" marker-end="url(#data-arrow)"/>
+<text x="3554" y="1355" class="small">current read / controlled writes</text>
+<rect class="band" x="40" y="1580" width="3980" height="280" rx="18"/>
+<text x="65" y="1620" class="phase">CROSS-CUTTING LIFECYCLE &amp; USER CONTROL</text>
+<text x="65" y="1662" class="heading">Dashboard &amp; document protection</text>
+<text x="65" y="1694" class="copy">Processing, review and Apply have distinct completion states.</text>
+<text x="65" y="1722" class="copy">All must complete for final completion; override status remains open.</text>
+<text x="65" y="1750" class="copy">Apply is blocked during active review; other papers may continue.</text>
+<text x="1110" y="1662" class="heading">One-stop termination</text>
+<text x="1110" y="1694" class="copy">User chooses: continue in background / force termination / prepare then exit.</text>
+<text x="1110" y="1722" class="copy">Explain that closing the interface may leave processing running.</text>
+<text x="1110" y="1750" class="copy">Defaults, saved selections, lock restoration and recovery guarantees are open.</text>
+<text x="2350" y="1662" class="heading">Pending override help  &lt;?&gt;</text>
+<text x="2350" y="1694" class="copy">Show complete override process with concise explanation + diagram.</text>
+<text x="2350" y="1722" class="copy">Keep explicit user choices; disclose fallback result and selection basis.</text>
+<text x="2350" y="1750" class="copy">Missing calls, query-1 failure and mandatory-figure exceptions are open.</text>
+<text x="65" y="1818" class="small">READING GUIDE: solid arrows = conceptual data flow; amber dashed arrow = rerun control; dotted arrows = storage association. Phase order does not settle scheduling or atomicity.</text>
+<text x="40" y="1900" class="small">Design review artifact · Broad direction → right; within phases ↓ down · Requirements trace to docs/design-status.md and docs/open-design.md · No application implementation</text>
+</svg>

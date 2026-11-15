@@ -621,3 +621,31 @@ At the user’s explicit request, posted the issue audit as comments on #1–13 
 The [HTML/SVG flowchart](diagrams/review-workflow.html) is a review artifact with three diagrams: review/application, explicit pending override, and one-stop termination. It distinguishes accepted requirements, provisional dependencies, and unapproved transitions; scenario controls and SVG downloads are local presentation features. It is not application implementation, a complete wireframe set, or approval of the six-stage state machine. Next: review this flow, develop corresponding wireframes, then decide acceptance boundaries.
 
 Validation: checked HTML IDs/navigation/download targets, parsed all three SVG XML trees, and checked JavaScript syntax. Browser preview was unavailable because the browser access host was unavailable; visual rendering and browser interaction are not claimed as verified.
+
+## Application-wide data-flow diagram — 2026-11-15
+
+At the user’s request, the [application data-flow HTML](diagrams/app-data-flow.html) and [standalone vector SVG](diagrams/app-data-flow.svg) place the whole first-version path in one diagram: input/workspace → scope/execution plan → CLI/model execution → candidate representation → comparison → human review → approval/application → reading/manual handoff. Major phases run rightward; detailed steps within each phase run downward. The diagram includes the external model-service boundary, rerun feedback, source/runs/review/current storage, and shared dashboard/protection/termination controls. Required future reading/combined modes are marked as not yet designed, rather than invented as completed flows.
+
+This is a conceptual data-flow review artifact; it does not select exact scheduling, data schemas, preprocessing, review-exit transitions, or transaction/recovery semantics. The earlier [review detail](diagrams/review-workflow.html) remains available. HTML provides zoom, fit-width, scrolling, and SVG download; no application processing is implemented. SVG/XML, node structure, IDs, text-anchor bounds, and JavaScript syntax were checked. Browser rendering remains unverified.
+
+## Simplified application data flow V2 — 2026-11-15
+
+The user requested a less verbose visual schema and a check against false sequential ordering. [V2 HTML](diagrams/app-data-flow-v2.html) and [V2 SVG](diagrams/app-data-flow-v2.svg) use a single Scientific Paper source, call fan-out, a candidate stack, a comparison/review path, an approved-rerun feedback loop, and independent reading/manual-handoff branches. V1 is retained as the earlier detailed artifact.
+
+Dependency review: independent calls may execute concurrently, subject to configured concurrency; candidate collection is not an all-calls-complete barrier. Exact readiness for partial comparisons remains open. Content, bibliography, source mapping, and provenance are fields of results, not required sequential processing stages; naming depends on bibliographic fields. Structure comparison precedes content comparison. Review can coexist with other papers/calls and approved reruns. Reading in-app is not a prerequisite for manual handoff. Review-exit/Apply transitions remain unapproved. Shared local storage and lifecycle controls are not additional pipeline stages. This review checks the diagram against accepted design requirements, not runtime behavior.
+
+V2 SVG/XML and JavaScript syntax were checked; actual browser rendering remains unverified.
+
+## Responsibility separation: user, frontend, backend, model service — 2026-11-15
+
+The user requested explicit separation of the user level from frontend and backend processing. Execution-plan choices involve the user. The program generates review items; the user supplies responses. Independent calls are backend work and use the account/LLM route previously connected by the user. This establishes responsibility boundaries, not a specific authentication, transport, or process architecture.
+
+[V3 HTML](diagrams/app-data-flow-v3.html) and [V3 SVG](diagrams/app-data-flow-v3.svg) show four lanes: user decisions/responses; frontend display/input; local backend processing/state; external account/model service. Backend-generated review items travel to the frontend, while user selections return to backend state. Execution configuration and approval follow a separate user/frontend/backend interaction. The model service returns per-call candidates; a connected account is an access prerequisite, not bibliographic content or an instruction to put credentials in model input. Joint approval and current-document writes retain the active-review protection and unresolved review-exit transition. Comparison is a logical role, not authorization for automatic additional model calls.
+
+V2 remains available as the simpler dependency overview. V3 is a conceptual responsibility diagram, not an implemented frontend/backend API contract. SVG/XML, unique IDs and embedded copy consistency, and JavaScript syntax were checked; browser rendering remains unverified.
+
+## Review-area connector cleanup V2.1 — 2026-11-15
+
+The user requested the screenshot’s frontend/backend diagram with cleaned connectors, labeled V2.1. [HTML](diagrams/app-data-flow-v2.1.html) / [SVG](diagrams/app-data-flow-v2.1.svg) therefore derive from the prior V3 responsibility view, despite the requested version label. Model responses now enter candidates from the left, independently of the comparison-to-review route. User input enters the response-record node at its top; change sets leave from the right via a separate corridor. A bridge denotes the non-joining model-response/rerun crossing. No design policy or approval boundary changed. SVG and JavaScript syntax were checked; browser rendering remains unverified.
+
+The user subsequently accepted V2.1’s visual layout and connector cleanup. Use it as the visual baseline for the next wireframes; this does not approve the unselected review-exit/Apply state transitions. See the [current visual checkpoint](open-design.md#current-visual-checkpoint--2026-11-15).
