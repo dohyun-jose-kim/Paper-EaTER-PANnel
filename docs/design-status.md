@@ -38,7 +38,7 @@ This document and open-design.md preserve the decisions from the current convers
 
 The assistant described: (1) start review, (2) compare/select, (3) rerun if needed, (4) collect a change set, (5) finish review and apply, (6) record application outcomes. This outline combined accepted requirements with new proposals. The user explicitly withheld final approval of the outline as a whole.
 
-In particular, do not implement or record as accepted: `Finish review` / `Back to review` controls; the exact `Reviewing -> Ready to apply -> Applying -> Completed` transitions; the action that freezes a change set; no-change completion or leaving/resuming a review session; whether a subset may be applied while other items remain pending; or the exact document-unlock point and failure behavior. No automatic release or Apply is authorized. Recording approval separately from application success was accepted earlier, but the detailed success/failure workflow and revision mechanism remain proposals.
+In particular, do not implement or record as accepted: `Finish review` / `Back to review` controls; the exact `Reviewing -> Ready to apply -> Applying -> Completed` transitions; the action that freezes a change set; no-change completion or leaving/resuming a review session; the exact document-unlock point and failure behavior. No automatic release or Apply is authorized. Recording approval separately from application success was accepted earlier, but the detailed success/failure workflow and revision mechanism remain proposals.
 
 ### Preserved six-stage workflow proposal for the next review
 
@@ -70,16 +70,16 @@ Applying (only the approved set may write)
 Completed
 ```
 
-Additional proposed branches from the prior explanation, also NOT approved:
+Branches from the prior explanation (current status noted individually):
 
 - Complete review without modifying content when an inspected item needs no correction; the control and completion scope remain undefined.
 - Leave or postpone a review while preserving proposals/selections; lock release and resumption behavior remain undefined.
-- Apply only the reviewed subset while other items remain pending; this has not been accepted as a product policy.
+- Historical proposal: apply a subset while other items remain pending. The later decision below now permits an explicit override route; its detailed state transitions remain unapproved.
 - Keep new suggestions separate after a change set is fixed; incorporating one would require returning to review. The precise freezing/version contract remains a proposal.
 
 These branches must not be inferred from the existing requirement that pending review does not block unrelated processing. Do not introduce automatic unlock, automatic application, or model retries as part of documenting this sketch.
 
-Suggested opening question for the next conversation:
+Historical opening question (deferred by the later decision below; do not request approval before the flowchart and UX review):
 
 > 검토 중에는 문서를 보호하고 rerun·비교·선택을 계속할 수 있습니다. 제안한 전환은 `Finish review`로 선택한 change set을 고정한 뒤, 최종 확인 화면에서 `Apply`하거나 `Back to review`로 돌아가는 방식입니다. `Finish review`와 `Apply`를 분리하는 이 방식부터 확인해 주시겠습니까?
 
@@ -87,11 +87,65 @@ Present the six-stage table when useful, but ask for one focused decision at a t
 
 ### Next design discussion and work boundary
 
-Resume with the transition out of active review: explain alternatives for ending review and permitting an approved change set to Apply, with rerun still available during review. Ask one focused question at a time. Do not reopen the already accepted naming, preservation, rerun, single-instance, or active-review blocking requirements.
+Defer the transition out of active review until a complete flowchart and sufficiently composed functions/UI support evaluation of the user experience. Preserve the six-stage proposal for that review. Ask one focused question at a time when that review resumes. Do not reopen the already accepted naming, preservation, rerun, single-instance, or active-review blocking requirements.
 
-Other remaining work: concrete Unicode vocabulary/validation coverage, numbering scopes, suffix details and shortening strategy; structured schema fields/source coordinates; alignment criteria and figure completeness checks; permissions/deletion dependencies; instance scope and multiple tabs; CLI integration feasibility, security/encryption, onboarding, and evaluation criteria. The technical refinement section records proposals, not completed investigations or implemented features. Export packaging, detailed navigation precision, direct PDF drawing, detailed recovery, multilingual UI, web retrieval, and RAG retain their existing deferred/later status.
+Other remaining work: concrete Unicode vocabulary/validation coverage, numbering scopes, suffix details and shortening strategy; structured schema fields/source coordinates; alignment criteria and figure completeness checks; permissions/deletion dependencies; instance scope and multiple tabs; CLI integration feasibility, security/encryption, onboarding, and evaluation criteria. The technical refinement section records proposals, not completed investigations or implemented features. Export packaging, detailed navigation precision, direct PDF drawing, multilingual UI, web retrieval, and RAG retain their existing deferred/later status. The later termination-choice decision opens that part of lifecycle design; detailed recovery mechanisms remain open.
 
-Local publication status: commit 22eb17d is the last committed baseline at this handoff; subsequent changes are saved in the working tree. They have not been pushed or published as GitHub issue updates. Local issue drafts and prior published comments are historical records; these consolidated local design documents contain the later decisions. The temporary memo is preserved and is not the authoritative current decision record.
+Historical publication checkpoint: the initial handoff used commit 22eb17d as its baseline; the consolidated handoff was subsequently committed as b99f15b. Later follow-up decisions are recorded below. Use Git history for the current commit status. They have not been pushed or published as GitHub issue updates. Local issue drafts and prior published comments are historical records; these consolidated local design documents contain the later decisions. The temporary memo is preserved and is not the authoritative current decision record.
+
+## Follow-up decision: pending override and deferred workflow approval
+
+Status: user-confirmed product behavior on 2026-11-15; detailed interaction and state transitions remain open.
+
+- **Review exit and Apply:** decide this interaction after drawing the complete flowchart and composing the functions sufficiently to assess the user experience. The six-stage workflow remains a proposal. Do not request isolated approval of `Finish review` and `Apply` before that review.
+- **Default:** resolve all pending items before finalization.
+- **Exception:** permit the user to proceed with pending items remaining. This is supported but not recommended. Require an explicit override confirmation that states that pending regions remain. Exact English command/button wording is not selected.
+- **Fallback for an unselected pending item in this explicit override:** if identical candidates form a strict majority (more than one half, such as 2/3 or 3/5), select that result. Display a popup-style notification stating which result will be selected and that the basis is majority agreement.
+- **No strict majority:** select the result of query 1 by its original query order, not completion order. Display a warning that this is an arbitrary fallback because no strict majority could be established. Do not describe it as the best or verified result.
+- This fallback addresses items for which the user has not chosen a candidate. It does not authorize replacing an explicit user selection. Show the chosen result and selection basis in the override interaction; detailed grouping and confirmation order remain to be designed.
+- Ordinary disagreement detection still marks affected content pending even when a majority agrees. Majority agreement does not automatically finalize content. The new fallback applies only to the explicit user override route, not normal processing or unsolicited Apply.
+- The active-review Apply block remains in force. Permission to proceed with pending items does not define when the review lock is released or authorize writes during active review.
+
+Remaining specification: candidate equivalence and voting scope across reruns; denominator when calls fail or results are missing; behavior if query 1 has no usable result; aggregate notification layout; and final status/provenance for overridden items. The existing mandatory human review of every figure remains recorded. Whether this exception can bypass that requirement must be resolved explicitly; do not silently mark unreviewed figures as human-reviewed. Distinguish applying only selected changes from finalizing with fallback-selected pending content in the future flowchart.
+
+## Follow-up decision: joint approval and completion levels
+
+Status: user clarification on 2026-11-15.
+
+- **Joint approval:** approve content changes and file/folder renames together. The final approval view must expose both. This resolves the separate-versus-joint approval choice; it does not yet specify filesystem transaction, rollback, or recovery mechanisms.
+- **Distinct completion levels:** processing completion, review completion, and Apply completion are separate states. None alone means final completion. All must be complete before the final completed state is shown. Exact item aggregation and treatment of explicitly overridden pending items remain to be specified; override must not silently be represented as human review.
+- **Review interruption/resumption:** the user requested clarification, not a policy decision. Explain leaving the review screen, switching papers, or closing the app with selections not yet applied, and distinguish persistence of selections from continued protection of the current document. Selection retention, lock lifecycle, and recovery behavior are not newly approved here.
+- **Related changes (historical clarification):** at this point the user had not selected a dependency policy. The later follow-up below provisionally adopts the proposed criterion. The agent should propose criteria and concrete examples for linked changes (e.g. figure identity and caption association, citation and reference target). Do not treat this as approval to bundle every related element or to modify dependent content automatically. Joint inspection of related elements remains accepted.
+
+## Follow-up decision: override help, termination choices, and provisional dependencies
+
+Status: user-confirmed requirements on 2026-11-15, with the dependency policy explicitly provisional.
+
+### Override process help
+
+The user accepted the pending override route and its strict-majority / original-query-1 fallback notifications. Place a `<?>` help icon beside the override notification/confirmation. It opens a concise explanation of the complete override process with a compact diagram: normal pending resolution; explicit override confirmation; preserve explicit selections; for unselected items, strict majority selects the matching result, otherwise query 1 is the arbitrary fallback; disclose the chosen result and basis before approved application. This is explanatory help, not a substitute for the required notification or warning. Exact popup/help layout and Apply transitions remain open; do not present the unapproved six-stage workflow as finalized.
+
+### One-stop termination
+
+Inform users that closing the visible app/browser interface does not necessarily terminate processing. Provide one place to choose the termination behavior rather than silently deciding to keep running or immediately terminate:
+
+| Choice | Required behavior / explanation |
+|---|---|
+| Continue in background | Keep processing in the background after the visible interface closes. Inform the user that processing continues. |
+| Force termination | Stop without background continuation. Distinguish abrupt termination from orderly shutdown; do not promise complete preservation of in-flight work. |
+| Prepare for recovery, then exit | Allow a short wait to save recoverable state and perform orderly shutdown before exiting. Explain that termination is delayed for this preparation. |
+
+The user selected this one-stop choice model. Exact labels, default choice, close/quit triggers, CLI subprocess handling, persistence/checkpoint granularity, timeout behavior, and recovery guarantees require technical design and platform feasibility checks. Do not claim browser-close interception is implemented or universally available. Unexpected process/OS termination is distinct from a user-requested orderly shutdown.
+
+Selection persistence and active-review document protection must be considered in this lifecycle design. The prior suggestion to persist all selections and preserve protection through interruption/restart is not independently approved by this termination decision. Existing active-review Apply blocking remains accepted; exit/restart lock semantics remain open. Other papers and reruns may continue when background processing is chosen, within existing execution approvals.
+
+### Provisional linked-change policy
+
+Adopt the proposed dependency criterion provisionally: if applying only one change would make content or a relationship inconsistent, present the necessary changes together. Show the included elements and the reason for grouping, then obtain user confirmation. An independent caption typo correction need not be bundled with figure replacement; a figure identity correction requiring a caption reassociation should expose both changes together. A citation identifier change requiring a reference-target update should expose the linked changes together. Do not silently edit dependent content or bundle all related elements indiscriminately. Detailed dependency detection and transaction/recovery rules remain design work. This policy is provisional, not a final immutable decision.
+
+### Latest resume point
+
+Preserve the six-stage workflow as an unapproved proposal, and defer review-exit/Apply approval until the complete flowchart and composed UI/functions support UX evaluation. The next design artifact should integrate override help, the provisional dependency groups, joint content/rename approval, distinct completion levels, and one-stop termination into that reviewable flow. Do not request isolated approval of the old six-stage proposal as if these later decisions did not exist. Documentation does not authorize implementation or model execution.
 
 ## Scope and basis
 

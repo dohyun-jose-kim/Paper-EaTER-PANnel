@@ -12,7 +12,7 @@ Read [the conversation handoff](design-status.md#resume-here-conversation-handof
 
 The [preserved six-stage proposal](design-status.md#preserved-six-stage-workflow-proposal-for-the-next-review) includes the step-by-step behavior, proposed state sketch, unapproved branches, and an opening review question for the next conversation. It was retained at the user's request without promoting it to an approved design.
 
-Next question: how should the user exit active review and permit final approved application? `Finish review`, `Back to review`, change-set freezing, subset application while other items remain pending, no-change completion, and exact unlock/failure transitions are still proposals. Rerun during review is already supported by the accepted requirements; it does not unlock the document or automatically apply new candidates. Do not treat the six-stage explanation as an accepted state machine.
+Review exit and Apply transitions are deferred until a complete flowchart and composed functions/UI allow UX assessment. `Finish review`, `Back to review`, change-set freezing, no-change completion, and exact unlock/failure transitions remain proposals. Proceeding with pending items is now permitted as an explicit, non-recommended override; resolving all pending items before finalization remains the default. See the [follow-up decision](design-status.md#follow-up-decision-pending-override-and-deferred-workflow-approval). Rerun during review is already supported by the accepted requirements; it does not unlock the document or automatically apply new candidates. Do not treat the six-stage explanation as an accepted state machine.
 
 This tracker and design-status.md are the current local record; historical issue drafts/comments have not been synchronized with these latest decisions. Documentation only; implementation and model evaluation remain outside the authorized scope.
 
@@ -58,7 +58,7 @@ Remaining design: alignment and comparison rules, visual figure/source compariso
 
 Confirmed: users select a result and inspect its internal structured output and all items subject to approval. The scope includes extracted paper title, content and structure, source mapping, relationships, uncertainty, execution provenance, citation information, and proposed output file/folder names or renames where present. Make approval scope and changes inspectable; do not limit the interface to figure/caption previews. Distinguish bibliographic metadata, execution metadata, and filesystem proposals. Mandatory figure review remains required.
 
-Remaining design: navigation of the structured result, detailed bibliographic fields and citation formats, naming rules, approval granularity, and controls/transaction boundaries for content changes versus file/folder renames. Raw JSON display and a particular screen layout are not selected. Visibility of all approval targets does not imply a separate mandatory approval for every element.
+Remaining design: navigation of the structured result, detailed bibliographic fields and citation formats, naming rules, approval granularity, and transaction boundaries. Content changes and file/folder renames now require joint approval; transaction/rollback mechanisms remain open. Raw JSON display and a particular screen layout are not selected. Visibility of all approval targets does not imply a separate mandatory approval for every element.
 
 ## Naming and workspace layout
 
@@ -109,6 +109,28 @@ Confirmed: select candidates per paragraph, figure, table, and bibliographic fie
 Confirmed: only one application instance runs at a time; it may execute parallel papers/calls and CLI subprocesses internally. While a document is being reviewed, proposals can still be generated and shown, but Apply to that document is blocked. Preserve the current document and keep candidate outputs separate; other work continues. Application write paths must enforce the block, including app-mediated agent writes, rather than relying on a disabled UI button alone.
 
 Remaining design: instance-lock scope, multiple-tab behavior, entry/exit rules for active review, explicit release-to-Apply interaction, and handling external filesystem modifications. No automatic unlock or Apply is authorized. A stale-revision check is a defensive mechanism outside this protection, not permission to update a document during review.
+
+## Pending override: confirmed behavior and remaining detail
+
+Default: resolve every pending item before finalization. Users may explicitly override this default after confirmation that pending regions remain. For an unselected pending item, choose a strict-majority result (more than half; e.g. 2/3 or 3/5) and show which result is selected and why in a popup-style notification. Without a strict majority, choose query 1 by original query order and warn that the choice is arbitrary. This does not replace explicit user selections or authorize automatic finalization during ordinary processing.
+
+The [decision record](design-status.md#follow-up-decision-pending-override-and-deferred-workflow-approval) retains the unresolved details: voting scope/equivalence, missing results and unavailable query 1, notification and confirmation layout, override status/provenance, and the relationship to mandatory figure review. Review exit and Apply remain deferred for joint flowchart/UX review. Partial application and finalization with fallback-selected content must be shown as distinct cases in that design.
+
+## Joint approval, completion, and clarification checkpoint
+
+Confirmed: content changes and file/folder renames are approved together, with both visible in final approval. Processing, review, and Apply each have their own completion state; all must be complete for final completion. Their aggregation and the status of explicit pending overrides still need design.
+
+The user requested a concrete explanation of review interruption/resumption before choosing selection-persistence and document-protection behavior. Selection persistence and document-protection behavior across interruption remain unresolved. The later termination decision below establishes close/exit choices. For linked changes, the later follow-up provisionally adopts grouping when separate application would make content or relationships inconsistent, with visible reasons and user confirmation; this is not a universal bundling rule. See the [decision record](design-status.md#follow-up-decision-joint-approval-and-completion-levels).
+
+## Latest checkpoint: help and termination
+
+Confirmed: add a `<?>` help icon beside pending-override notification/confirmation, with a concise explanation and compact diagram of the whole override process. Keep the required selection notification and arbitrary-fallback warning.
+
+Confirmed: provide one-stop termination choices, informing users that closing the interface does not necessarily stop processing: continue in background; force termination without background processing; or wait for recoverable-state preparation and orderly exit. Defaults, close/quit triggers, subprocess shutdown, checkpoints, timeouts, and recovery guarantees remain to be designed. Selection persistence and review protection across exit/restart are not settled solely by this choice model.
+
+Provisionally accepted: group necessary linked changes when separate application would break content/relationship consistency; show grouping reasons and included items for user confirmation. See the [latest decision record](design-status.md#follow-up-decision-override-help-termination-choices-and-provisional-dependencies).
+
+Next: prepare an integrated flowchart and UI/function composition for UX review, preserving the unapproved status of review-exit/Apply transitions. Include override/help, dependencies, joint content/rename approval, separate completion levels, and termination choices. Detailed recovery was previously deferred; this follow-up opens the termination-choice requirements without settling all recovery mechanisms.
 
 ## Current checkpoint
 
