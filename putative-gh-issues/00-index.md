@@ -2,15 +2,17 @@
 
 Project version: `v0.2.1`.
 
-Publication status: Published as GitHub issues #1–#14. Product-design issues #1–#13 are open; completed setup issue #14 is closed.
+Publication status: Published as GitHub issues #1–#15. Product-design issues #1–#13 and #15 are open; completed setup issue #14 is closed.
+
+Latest update: design comments were posted on #1–13 on 2026-11-15; [publication record](../docs/design-status.md#issue-publication-and-vector-flowchart--2026-11-15). Original drafts remain historical; use the current design record for later decisions.
 
 ## Purpose and boundaries
 
-This directory contains 14 issue drafts: 13 product-design topics from [User choices and remaining design decisions](../docs/open-design.md), plus the requested GitHub repository and remote setup issue. Each draft is now linked to its published GitHub issue below.
+This directory contains 15 issue drafts: 14 product-design topics from [User choices and remaining design decisions](../docs/open-design.md), plus the requested GitHub repository and remote setup issue. Each draft is now linked to its published GitHub issue below.
 
 The two-digit IDs remain local references. The GitHub issue links below record the actual assigned numbers; neither numbering scheme defines priority or an implementation schedule. Related-issue links show coordination needs; they do not assert mandatory execution order.
 
-The drafts describe work to do. Their existence does not mean that the work, design review, or implementation is complete. Current work is on `big-pic-design`. Draft creation and issue publication are separate operations; all 14 drafts have now been published at the user’s request.
+The drafts describe work to do. Their existence does not mean that the work, design review, or implementation is complete. Current work is on `big-pic-design`. Draft creation and issue publication are separate operations; all 15 drafts have now been published at the user’s request.
 
 ## Levels of detail and readiness
 
@@ -22,7 +24,7 @@ The drafts describe work to do. Their existence does not mean that the work, des
 
 These levels describe the current work, not importance. They are separate from user configurability: an established user choice can still need substantial design. No product-design draft is ready for implementation.
 
-Do not reopen GUI introduction, user control over the established settings, or support for all three deliverable modes. Exact defaults, supported ranges, and combination constraints are still design work. No framework, schema, policy set, evaluation threshold, or sample size is selected by these drafts.
+Do not reopen GUI introduction, user control over the established settings, or support for all three deliverable modes. Exact defaults, supported ranges, and combination constraints are still design work. The original drafts do not supersede subsequently accepted representation and policy decisions. Framework selection, detailed schema, evaluation thresholds, and sample sizes remain unresolved.
 
 ## Issue list
 
@@ -42,6 +44,7 @@ Do not reopen GUI introduction, user control over the established settings, or s
 | 12 | [Subscription usage and API costs](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/12) | Exploration and definition | List the usage information and user controls needed before choosing provider-specific limits. |
 | 13 | [Fidelity, reproducibility, and traceability](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/13) | Exploration and definition | Define assessment terms and consequential error categories before proposing an evaluation protocol. |
 | 14 | [GitHub repository creation and remote connection](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/14) | Setup complete | Public repository and all three branch upstreams verified. |
+| 15 | [Bibliographic naming, workspace layout, and approved rename](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/15) | Design refinement | Specify naming edge cases and joint approval/failure scenarios. |
 
 ## Work that can start now
 

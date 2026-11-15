@@ -597,3 +597,27 @@ The supplied task plan contains the following historical proposals. They remain 
 These documents are now at the design-document review checkpoint. The user should check the boundary between established direction and provisional design, identify missing requirements, and correct any interpretation that changes the intended workflow.
 
 The user can set the order and priority of the remaining questions in [User choices and remaining design decisions](open-design.md). Review must distinguish established user choices from details such as defaults, constraints, and implementation mechanisms. Approval of this draft does not settle those details or authorize project implementation or model evaluation. Document completion and design completion are separate milestones.
+
+## Issue publication and vector flowchart — 2026-11-15
+
+At the user’s explicit request, posted the issue audit as comments on #1–13 and created [#15: bibliographic naming, workspace layout, and approved rename behavior](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/15). No existing issue was closed and issue bodies were not rewritten. #14 remains closed. The comments identify superseded body statements and distinguish partial design progress from implementation. Local commits were not pushed; comments contain the relevant decisions directly.
+
+| Issue | Published update |
+|---|---|
+| #1 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/1#issuecomment-6891345762) |
+| #2 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/2#issuecomment-6891345930) |
+| #3 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/3#issuecomment-6891346131) |
+| #4 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/4#issuecomment-6891346363) |
+| #5 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/5#issuecomment-6891346552) |
+| #6 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/6#issuecomment-6891346743) |
+| #7 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/7#issuecomment-6891346946) |
+| #8 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/8#issuecomment-6891347167) |
+| #9 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/9#issuecomment-6891347412) |
+| #10 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/10#issuecomment-6891347631) |
+| #11 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/11#issuecomment-6891347807) |
+| #12 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/12#issuecomment-6891348063) |
+| #13 | [Design update](https://github.com/dohyun-jose-kim/Paper-EaTER-PANnel/issues/13#issuecomment-6891348284) |
+
+The [HTML/SVG flowchart](diagrams/review-workflow.html) is a review artifact with three diagrams: review/application, explicit pending override, and one-stop termination. It distinguishes accepted requirements, provisional dependencies, and unapproved transitions; scenario controls and SVG downloads are local presentation features. It is not application implementation, a complete wireframe set, or approval of the six-stage state machine. Next: review this flow, develop corresponding wireframes, then decide acceptance boundaries.
+
+Validation: checked HTML IDs/navigation/download targets, parsed all three SVG XML trees, and checked JavaScript syntax. Browser preview was unavailable because the browser access host was unavailable; visual rendering and browser interaction are not claimed as verified.
