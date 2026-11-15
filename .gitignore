@@ -8,3 +8,6 @@
 
 # Unofficial local ZIP packages.
 *.zip
+
+# Local mascot source package.
+/paper-peter-pan-v1.1/
