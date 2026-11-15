@@ -8,13 +8,13 @@ Project version: `v0.2.1`.
 
 ## Resume checkpoint on 2026-11-15
 
-Read [the conversation handoff](design-status.md#resume-here-conversation-handoff-on-2026-11-15) before continuing. It consolidates the accepted requirements and distinguishes them from unapproved proposals. The last six-stage workflow explanation was NOT finally approved by the user. Earlier individual decisions remain valid.
+Start with the [current visual checkpoint](#current-visual-checkpoint--2026-11-15) and review-to-final-confirmation wireframes. Read [the conversation handoff](design-status.md#resume-here-conversation-handoff-on-2026-11-15) before continuing. It consolidates the accepted requirements and distinguishes them from unapproved proposals. The last six-stage workflow explanation was NOT finally approved by the user. Earlier individual decisions remain valid.
 
 The [preserved six-stage proposal](design-status.md#preserved-six-stage-workflow-proposal-for-the-next-review) includes the step-by-step behavior, proposed state sketch, unapproved branches, and an opening review question for the next conversation. It was retained at the user's request without promoting it to an approved design.
 
 Review exit and Apply transitions are deferred until a complete flowchart and composed functions/UI allow UX assessment. `Finish review`, `Back to review`, change-set freezing, no-change completion, and exact unlock/failure transitions remain proposals. Proceeding with pending items is now permitted as an explicit, non-recommended override; resolving all pending items before finalization remains the default. See the [follow-up decision](design-status.md#follow-up-decision-pending-override-and-deferred-workflow-approval). Rerun during review is already supported by the accepted requirements; it does not unlock the document or automatically apply new candidates. Do not treat the six-stage explanation as an accepted state machine.
 
-This tracker and design-status.md are the current local record; historical issue drafts/comments have not been synchronized with these latest decisions. Documentation only; implementation and model evaluation remain outside the authorized scope.
+This tracker and design-status.md are the current local record. Issue comments #1–13 were published and #15 was created; obsolete local drafts have since been removed. Issue bodies #3/#5/#8/#9 were also updated and verified during cleanup; all remain open. Historical comments are retained as history, not competing task lists. Documentation only; implementation and model evaluation remain outside the authorized scope.
 
 ## Purpose and use
 
@@ -82,7 +82,7 @@ Remaining naming design: replacement vocabulary, target-filesystem validation, c
 
 The [technical refinement draft](design-status.md#technical-refinement-draft-naming-revisions-comparison-and-review) supplies concrete proposals for Unicode/filename handling, mapping versions, collision/length validation, stable IDs and immutable revisions, approval scope and stale-result checks, structural alignment, content comparison, figure coverage, and UI/state separation. It also defines the investigation boundaries for CLI adapters, security, and acceptance examples.
 
-These are reviewable engineering proposals, not newly accepted decisions or implemented capabilities. Naming conversion always retains the already accepted user-confirmation requirement. The mapping JSON now carries proposed categories, ordering, approval fields, and design examples; it is not an executable converter. Review next: detailed validation rules for the selected conservative portability policy and name-token vocabulary (name-first/code-point-second precedence is now confirmed), detailed topic-suffix rules, then revision/approval granularity. CLI integration feasibility and security mechanisms still need focused research. Deferred export/recovery topics have not been silently settled.
+These are reviewable engineering proposals, not newly accepted decisions or implemented capabilities. Naming conversion always retains the already accepted user-confirmation requirement. The mapping JSON now carries proposed categories, ordering, approval fields, and design examples; it is not an executable converter. Remaining backlog: detailed validation rules for the selected conservative portability policy and name-token vocabulary (name-first/code-point-second precedence is confirmed), topic-suffix rules, and revision/approval granularity. These do not replace the current wireframe-first work order. CLI integration feasibility and security mechanisms still need focused research. Deferred export/recovery topics have not been silently settled.
 
 ## Confirmed fallback precedence
 
@@ -130,7 +130,7 @@ Confirmed: provide one-stop termination choices, informing users that closing th
 
 Provisionally accepted: group necessary linked changes when separate application would break content/relationship consistency; show grouping reasons and included items for user confirmation. See the [latest decision record](design-status.md#follow-up-decision-override-help-termination-choices-and-provisional-dependencies).
 
-Next: prepare an integrated flowchart and UI/function composition for UX review, preserving the unapproved status of review-exit/Apply transitions. Include override/help, dependencies, joint content/rename approval, separate completion levels, and termination choices. Detailed recovery was previously deferred; this follow-up opens the termination-choice requirements without settling all recovery mechanisms.
+The integrated V2.1 flowchart is available. Next: review-to-final-confirmation wireframes and UX scenarios, preserving the unapproved status of review-exit/Apply transitions. Include override/help, dependencies, joint content/rename approval, separate completion levels, and termination choices. Detailed recovery was previously deferred; this follow-up opens the termination-choice requirements without settling all recovery mechanisms.
 
 ## Current checkpoint
 
@@ -167,13 +167,13 @@ Fidelity means preserving the intended source information. Reproducibility conce
 
 The next review should identify missing topics, incorrect status assignments, and any confusion between user controls and internal design. The user does not need to resolve every remaining detail before accepting these documents as an accurate record of the current design discussion.
 
-The user requested decision comments on related GitHub issues as well as these local documents. Posting a decision summary does not complete a design issue; publication references are recorded in design-status.md. The temporary discussion memo remains unchanged. Subsequent answers should update the decision record and the corresponding remaining question together.
+The user requested decision comments on related GitHub issues as well as these local documents. Posting a decision summary does not complete a design issue; publication references are recorded in design-status.md. The temporary discussion memo was subsequently reconciled and removed; see the historical memo reconciliation below. Subsequent answers should update the decision record and the corresponding remaining question together.
 
 ## Pre-implementation issue audit and agreed work order — 2026-11-15
 
 The user selected the next work order: (1) inspect user scenarios through an integrated flowchart and wireframes, then (2) decide result acceptance boundaries, including mandatory inspection, permitted override scope, and distinct completion labels. This is design work, not authorization to implement or run model evaluations. Preserve unsettled transitions as proposals in the visual artifacts.
 
-Read-only audit of the live GitHub issue bodies and completion criteria: #1–13 remain open; #14 is closed. No additional design issue currently satisfies all its existing completion criteria. Partial design progress is not implementation completion. No GitHub issue was edited or created during this audit.
+Historical read-only audit (before comment publication, #15 creation and body cleanup): #1–13 remain open; #14 is closed. No additional design issue currently satisfies all its existing completion criteria. Partial design progress is not implementation completion. No GitHub issue was edited or created during this audit.
 
 | Issues | Suggested update classification | Remaining boundary |
 |---|---|---|
@@ -183,9 +183,9 @@ Read-only audit of the live GitHub issue bodies and completion criteria: #1–13
 | #13 | Definitions and assessment principles established; acceptance design remains | Mode-specific criteria, reference cases, error classification and justified evaluation method |
 | #14 | Complete; retain closed state | Repository setup only |
 
-Priority body corrections: #3 still says no unit/count range is selected; #5 says voting and comparison units are unselected; #8 must distinguish the accepted conceptual internal representation/local formats from unresolved detailed schema and deferred export packaging; #9 must record manual-only retention and the accepted completion levels/termination choices without claiming a complete state machine. Earlier decision comments do not remove obsolete statements in issue bodies. #1/#8/#11/#13 span all three product modes: preserve that scope while distinguishing first-version work from deferred modes; do not close them merely because first-version requirements are recorded.
+Historical body findings, addressed in the later cleanup: #3 said no unit/count range is selected; #5 said voting and comparison units are unselected; #8 must distinguish the accepted conceptual internal representation/local formats from unresolved detailed schema and deferred export packaging; #9 must record manual-only retention and the accepted completion levels/termination choices without claiming a complete state machine. Earlier decision comments do not remove obsolete statements in issue bodies. #1/#8/#11/#13 span all three product modes: preserve that scope while distinguishing first-version work from deferred modes; do not close them merely because first-version requirements are recorded.
 
-Recommended new issue candidate (not issued or user-approved): `[Design] Define bibliographic naming, workspace layout, and approved rename behavior`. Existing #8 addresses representation/handoff, #9 lifecycle/provenance, and #11 GUI; none explicitly owns completion criteria for the complete naming/workspace policy. Track original bibliographic metadata and evidence, field precedence, journal mapping, Unicode/fallback confirmation, collision/shortening, accepted directory/file layout, and joint content/rename approval with failure behavior. Cross-link existing issues and give each requirement one primary owner. New issuance is not logically mandatory if an existing issue is explicitly expanded to own these criteria; explicit coverage is necessary.
+Historical proposal, subsequently authorized and issued as #15: `[Design] Define bibliographic naming, workspace layout, and approved rename behavior`. Existing #8 addresses representation/handoff, #9 lifecycle/provenance, and #11 GUI; none explicitly owns completion criteria for the complete naming/workspace policy. Track original bibliographic metadata and evidence, field precedence, journal mapping, Unicode/fallback confirmation, collision/shortening, accepted directory/file layout, and joint content/rename approval with failure behavior. Cross-link existing issues and give each requirement one primary owner. New issuance is not logically mandatory if an existing issue is explicitly expanded to own these criteria; explicit coverage is necessary.
 
 Do not create duplicate issues solely for override (#5), termination (#9), flowcharts/wireframes (#1/#11), or acceptance criteria (#13). These can be updated in place. Optional future splits must preserve parent completion criteria and traceability. Local commits are not yet pushed, so GitHub updates must not present unpushed branch links as already published evidence.
 
@@ -195,6 +195,14 @@ The user subsequently authorized publication: comments were posted on #1–13 an
 
 ## Current visual checkpoint — 2026-11-15
 
-The user accepted the [V2.1 responsibility diagram](diagrams/app-data-flow-v2.1.html) and its connector cleanup as the visual baseline. [Standalone SVG](diagrams/app-data-flow-v2.1.svg). Earlier V1/V2/V3 artifacts remain available; the requested V2.1 label follows V3 chronologically. Acceptance concerns layout and connection clarity, not the still-unapproved review-exit/Apply transitions.
+The user accepted the [V2.1 responsibility diagram](diagrams/app-data-flow-v2.1.html) and its connector cleanup as the visual baseline. [Standalone SVG](diagrams/app-data-flow-v2.1.svg). Earlier V1/V2/V3 artifacts were removed from the working tree and remain in Git history at `a56da5b`; the requested V2.1 label follows V3 chronologically. Acceptance concerns layout and connection clarity, not the still-unapproved review-exit/Apply transitions.
 
 Next: develop review-to-final-confirmation wireframes and inspect user scenarios. Then decide result acceptance boundaries. Remaining decisions include pending override versus mandatory figure review, missing calls/query-1 failure, overridden completion status, selection persistence and protection across shutdown/resume, and partial content/rename application failure. Detailed schema/alignment and CLI/authentication feasibility remain technical design work. No product implementation is authorized by the diagrams.
+
+## Historical memo reconciliation — 2026-11-15
+
+Reviewed the entire untracked `tmp-2026-11-13_0.1.md` before removal at the user’s request. It contained an early question inventory for issues #1–13, not additional accepted decisions. Established requirements and resolved questions are already represented in the current design record; its undetermined voting/count and publication status are superseded. Existing open topics retain input coverage, source navigation, recovery, security, usage and acceptance work.
+
+Retain these concrete elicitation prompts within those existing topics: representative field/layout/paper length, practical machine resources and acceptable waiting time (topics 1/3/6); permitted alternatives when a model or subscription route becomes unavailable (topics 7/9); sensitivity of inputs, including whether unpublished manuscripts must be supported (topic 8); and budget/retry/limit-reached expectations (topic 7). These are unanswered questions, not new requirements or numerical limits. Technical capabilities, concurrency limits, and evaluation thresholds still require agent investigation rather than arbitrary user answers.
+
+No unique confirmed requirement was found. The obsolete memo was removed; this reconciliation records its remaining useful questions without preserving a competing task list.
